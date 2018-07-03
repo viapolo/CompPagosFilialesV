@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Factor100DataSet" targetNamespace="http://tempuri.org/Factor100DataSet.xsd" xmlns:mstns="http://tempuri.org/Factor100DataSet.xsd" xmlns="http://tempuri.org/Factor100DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Factor100ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Factor100ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CompPagosFilialesV.My.MySettings.GlobalReference.Default.Factor100ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Production_AUXConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Production_AUXConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CompPagosFilialesV.My.MySettings.GlobalReference.Default.Production_AUXConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Vw_ChequesDetalleTableAdapter" GeneratorDataComponentClassName="Vw_ChequesDetalleTableAdapter" Name="Vw_ChequesDetalle" UserDataComponentName="Vw_ChequesDetalleTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Factor100ConnectionString (MySettings)" DbObjectName="Factor100.dbo.Vw_ChequesDetalle" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Cliente, RFC, Cheque, Banco, Moneda, MetPago, MontoCheque, Estatus, Fecha, Referencia, Referencia2, Importe, CL_NUM
+FROM            Vw_ChequesDetalle</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
+              <Mapping SourceColumn="RFC" DataSetColumn="RFC" />
+              <Mapping SourceColumn="Cheque" DataSetColumn="Cheque" />
+              <Mapping SourceColumn="Banco" DataSetColumn="Banco" />
+              <Mapping SourceColumn="Moneda" DataSetColumn="Moneda" />
+              <Mapping SourceColumn="MetPago" DataSetColumn="MetPago" />
+              <Mapping SourceColumn="MontoCheque" DataSetColumn="MontoCheque" />
+              <Mapping SourceColumn="Estatus" DataSetColumn="Estatus" />
+              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
+              <Mapping SourceColumn="Referencia" DataSetColumn="Referencia" />
+              <Mapping SourceColumn="Referencia2" DataSetColumn="Referencia2" />
+              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
+              <Mapping SourceColumn="CL_NUM" DataSetColumn="CL_NUM" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="Factor100ConnectionString (MySettings)" DbObjectName="Factor100.dbo.Vw_ChequesDetalle" DbObjectType="View" FillMethodModifier="Public" FillMethodName="CFDI_Enc_FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="CFDI_Enc_GetDataBy1" GeneratorSourceName="CFDI_Enc_FillBy1" GetMethodModifier="Public" GetMethodName="CFDI_Enc_GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="CFDI_Enc_GetDataBy1" UserSourceName="CFDI_Enc_FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COUNT(*) AS Expr1, RFC, Cheque, Banco, Moneda, MetPago, MontoCheque, Fecha, Estatus, CL_NUM
+FROM            Vw_ChequesDetalle
+GROUP BY RFC, Cheque, Banco, Moneda, MetPago, MontoCheque, Fecha, Estatus, CL_NUM</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="Factor100ConnectionString (MySettings)" DbObjectName="Factor100.dbo.Vw_ChequesDetalle" DbObjectType="View" FillMethodModifier="Public" FillMethodName="CFDI_Enc_xRFC_FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="CFDI_Enc_xRFC_GetDataBy" GeneratorSourceName="CFDI_Enc_xRFC_FillBy" GetMethodModifier="Public" GetMethodName="CFDI_Enc_xRFC_GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="CFDI_Enc_xRFC_GetDataBy" UserSourceName="CFDI_Enc_xRFC_FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COUNT(*) AS Expr1, RFC, Cheque, Banco, Moneda, MetPago, MontoCheque, Fecha, Estatus
+FROM            Vw_ChequesDetalle
+GROUP BY RFC, Cheque, Banco, Moneda, MetPago, MontoCheque, Fecha, Estatus
+HAVING        (RFC = @RFC)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="RFC" ColumnName="RFC" DataSourceName="Factor100.dbo.Vw_ChequesDetalle" DataTypeServer="varchar(15)" DbType="AnsiString" Direction="Input" ParameterName="@RFC" Precision="0" ProviderType="VarChar" Scale="0" Size="15" SourceColumn="RFC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="Factor100ConnectionString (MySettings)" DbObjectName="Factor100.dbo.Vw_ChequesDetalle" DbObjectType="View" FillMethodModifier="Public" FillMethodName="DocRela_FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="DocRela_GetDataBy" GeneratorSourceName="DocRela_FillBy" GetMethodModifier="Public" GetMethodName="DocRela_GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="DocRela_GetDataBy" UserSourceName="DocRela_FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Banco, CL_NUM, Cheque, Cliente, Estatus, Fecha, Importe, MetPago, Moneda, MontoCheque, RFC, Referencia, Referencia2 FROM Vw_ChequesDetalle WHERE (RFC = @RFC) AND (Cheque = @Cheque) ORDER BY Referencia</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="RFC" ColumnName="RFC" DataSourceName="Factor100.dbo.Vw_ChequesDetalle" DataTypeServer="varchar(15)" DbType="AnsiString" Direction="Input" ParameterName="@RFC" Precision="0" ProviderType="VarChar" Scale="0" Size="15" SourceColumn="RFC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Cheque" ColumnName="Cheque" DataSourceName="Factor100.dbo.Vw_ChequesDetalle" DataTypeServer="bigint" DbType="Int64" Direction="Input" ParameterName="@Cheque" Precision="0" ProviderType="BigInt" Scale="0" Size="8" SourceColumn="Cheque" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Factor100DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Factor100DataSet" msprop:Generator_UserDSName="Factor100DataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Vw_ChequesDetalle" msprop:Generator_TableClassName="Vw_ChequesDetalleDataTable" msprop:Generator_TableVarName="tableVw_ChequesDetalle" msprop:Generator_TablePropName="Vw_ChequesDetalle" msprop:Generator_RowDeletingName="Vw_ChequesDetalleRowDeleting" msprop:Generator_RowChangingName="Vw_ChequesDetalleRowChanging" msprop:Generator_RowEvHandlerName="Vw_ChequesDetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="Vw_ChequesDetalleRowDeleted" msprop:Generator_UserTableName="Vw_ChequesDetalle" msprop:Generator_RowChangedName="Vw_ChequesDetalleRowChanged" msprop:Generator_RowEvArgName="Vw_ChequesDetalleRowChangeEvent" msprop:Generator_RowClassName="Vw_ChequesDetalleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RFC" msprop:Generator_ColumnVarNameInTable="columnRFC" msprop:Generator_ColumnPropNameInRow="RFC" msprop:Generator_ColumnPropNameInTable="RFCColumn" msprop:Generator_UserColumnName="RFC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cheque" msprop:Generator_ColumnVarNameInTable="columnCheque" msprop:Generator_ColumnPropNameInRow="Cheque" msprop:Generator_ColumnPropNameInTable="ChequeColumn" msprop:Generator_UserColumnName="Cheque" type="xs:long" />
+              <xs:element name="Banco" msprop:Generator_ColumnVarNameInTable="columnBanco" msprop:Generator_ColumnPropNameInRow="Banco" msprop:Generator_ColumnPropNameInTable="BancoColumn" msprop:Generator_UserColumnName="Banco" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Moneda" msprop:Generator_ColumnVarNameInTable="columnMoneda" msprop:Generator_ColumnPropNameInRow="Moneda" msprop:Generator_ColumnPropNameInTable="MonedaColumn" msprop:Generator_UserColumnName="Moneda" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MetPago" msprop:Generator_ColumnVarNameInTable="columnMetPago" msprop:Generator_ColumnPropNameInRow="MetPago" msprop:Generator_ColumnPropNameInTable="MetPagoColumn" msprop:Generator_UserColumnName="MetPago" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MontoCheque" msprop:Generator_ColumnVarNameInTable="columnMontoCheque" msprop:Generator_ColumnPropNameInRow="MontoCheque" msprop:Generator_ColumnPropNameInTable="MontoChequeColumn" msprop:Generator_UserColumnName="MontoCheque" type="xs:double" minOccurs="0" />
+              <xs:element name="Estatus" msprop:Generator_ColumnVarNameInTable="columnEstatus" msprop:Generator_ColumnPropNameInRow="Estatus" msprop:Generator_ColumnPropNameInTable="EstatusColumn" msprop:Generator_UserColumnName="Estatus" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Referencia" msprop:Generator_ColumnVarNameInTable="columnReferencia" msprop:Generator_ColumnPropNameInRow="Referencia" msprop:Generator_ColumnPropNameInTable="ReferenciaColumn" msprop:Generator_UserColumnName="Referencia" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Referencia2" msprop:Generator_ColumnVarNameInTable="columnReferencia2" msprop:Generator_ColumnPropNameInRow="Referencia2" msprop:Generator_ColumnPropNameInTable="Referencia2Column" msprop:Generator_UserColumnName="Referencia2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_UserColumnName="Importe" type="xs:double" minOccurs="0" />
+              <xs:element name="CL_NUM" msprop:Generator_ColumnVarNameInTable="columnCL_NUM" msprop:Generator_ColumnPropNameInRow="CL_NUM" msprop:Generator_ColumnPropNameInTable="CL_NUMColumn" msprop:Generator_UserColumnName="CL_NUM" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

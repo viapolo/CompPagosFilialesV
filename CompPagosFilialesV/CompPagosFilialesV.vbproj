@@ -51,6 +51,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -72,13 +73,56 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="ATEBCOFIDIRECDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ATEBCOFIDIRECDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmCuentas.Designer.vb">
+      <DependentUpon>frmCuentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCuentas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="frmMails.Designer.vb">
+      <DependentUpon>frmMails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMails.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Production_AUXDataSet.vb">
+      <DependentUpon>Production_AUXDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WEB_FinagilDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WEB_FinagilDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Factor100DataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Factor100DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmInicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInicio.Designer.vb">
+      <DependentUpon>frmInicio.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUUIDRel.Designer.vb">
+      <DependentUpon>frmUUIDRel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUUIDRel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUUIDRelC.Designer.vb">
+      <DependentUpon>frmUUIDRelC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUUIDRelC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modVariables.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -94,8 +138,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Production_AUXDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Production_AUXDataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmCuentas.resx">
+      <DependentUpon>frmCuentas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInicio.resx">
+      <DependentUpon>frmInicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMails.resx">
+      <DependentUpon>frmMails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUUIDRel.resx">
+      <DependentUpon>frmUUIDRel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUUIDRelC.resx">
+      <DependentUpon>frmUUIDRelC.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -104,6 +168,39 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ATEBCOFIDIRECDataSet.xsc">
+      <DependentUpon>ATEBCOFIDIRECDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ATEBCOFIDIRECDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ATEBCOFIDIRECDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ATEBCOFIDIRECDataSet.xss">
+      <DependentUpon>ATEBCOFIDIRECDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WEB_FinagilDataSet.xsc">
+      <DependentUpon>WEB_FinagilDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WEB_FinagilDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WEB_FinagilDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="WEB_FinagilDataSet.xss">
+      <DependentUpon>WEB_FinagilDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Factor100DataSet.xsc">
+      <DependentUpon>Factor100DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Factor100DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Factor100DataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Factor100DataSet.xss">
+      <DependentUpon>Factor100DataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -114,6 +211,17 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="Production_AUXDataSet.xsc">
+      <DependentUpon>Production_AUXDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Production_AUXDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Production_AUXDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Production_AUXDataSet.xss">
+      <DependentUpon>Production_AUXDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
