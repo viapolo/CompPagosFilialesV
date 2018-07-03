@@ -65,7 +65,6 @@ Public Class frmUUIDRelC
             frmUUIDRel.dgvUUIDRelacionados.Item(7, CInt(frmUUIDRel.ts4.Text)).Value = leeXML(validaNull(CFDProveedorDataGridView.Item("XMLSAT", e.RowIndex).Value), "Folio")
 
             frmUUIDRel.dgvUUIDRelacionados.Item(13, CInt(frmUUIDRel.ts4.Text)).Value = (CDbl(frmUUIDRel.dgvUUIDRelacionados.Item(11, CInt(frmUUIDRel.ts4.Text)).Value)) - CDbl(CDbl(frmUUIDRel.dgvUUIDRelacionados.Item(4, CInt(frmUUIDRel.ts4.Text)).Value)).ToString("#,###.#0")
-            'MsgBox(frmUUIDRel.dgvUUIDRelacionados.Item(13, CInt(frmUUIDRel.ts4.Text)).Value.ToString)
             If Val(frmUUIDRel.dgvUUIDRelacionados.Item("dgDiferencia", e.RowIndex).Value) = -0.01 And frmUUIDRel.dgvUUIDRelacionados.Item("dgMoneda", e.RowIndex).Value = "MXN" Then
                 frmUUIDRel.dgvUUIDRelacionados.Item("dgMonto", e.RowIndex).Value = frmUUIDRel.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", e.RowIndex).Value
                 frmUUIDRel.dgvUUIDRelacionados.Item(13, CInt(frmUUIDRel.ts4.Text)).Value = (CDbl(frmUUIDRel.dgvUUIDRelacionados.Item(11, CInt(frmUUIDRel.ts4.Text)).Value)) - CDbl(CDbl(frmUUIDRel.dgvUUIDRelacionados.Item(4, CInt(frmUUIDRel.ts4.Text)).Value)).ToString("#,###.#0")
