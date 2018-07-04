@@ -69,6 +69,10 @@ Public Class frmPrincipal
 
     Private Sub btnNoProcesados_Click(sender As Object, e As EventArgs) Handles btnNoProcesados.Click
         Cursor = System.Windows.Forms.Cursors.WaitCursor
+        btnNoProcesados.Enabled = False
+        btnProcesar.Enabled = False
+        btnMails.Enabled = False
+        btnCuentas.Enabled = False
         Dim rows As Factor100DataSet.Vw_ChequesDetalleRow
 
         taComplementos.CFDI_Enc_FillBy1(dsComplemento.Vw_ChequesDetalle)
@@ -113,10 +117,18 @@ Public Class frmPrincipal
             Me.dgvComplementos.Item("dgDocRelacionado", i).Value = "UUID's Rel"
         Next
         Cursor = System.Windows.Forms.Cursors.Default
+        btnNoProcesados.Enabled = True
+        btnProcesar.Enabled = True
+        btnMails.Enabled = True
+        btnCuentas.Enabled = True
     End Sub
 
     Private Sub dgvComplementos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvComplementos.CellContentClick
         Cursor = System.Windows.Forms.Cursors.WaitCursor
+        btnNoProcesados.Enabled = False
+        btnProcesar.Enabled = False
+        btnMails.Enabled = False
+        btnCuentas.Enabled = False
         If e.ColumnIndex = 16 And Me.dgvComplementos.Item("dgDocRelacionado", e.RowIndex).Value = "UUID's Rel" Then
             varFechaDePago = dgvComplementos.Item("FechaPagoDataGridViewTextBoxColumn", e.RowIndex).Value
             varFormaDePago = dgvComplementos.Item("FormaDePagoPDataGridViewTextBoxColumn", e.RowIndex).Value
@@ -133,6 +145,10 @@ Public Class frmPrincipal
 
         End If
         Cursor = System.Windows.Forms.Cursors.Default
+        btnNoProcesados.Enabled = True
+        btnProcesar.Enabled = True
+        btnMails.Enabled = True
+        btnCuentas.Enabled = True
     End Sub
 
     Public Function validaNull(valor As Object)
@@ -164,10 +180,28 @@ Public Class frmPrincipal
         Return retorno
     End Function
 
+    Public Function habilitar_desabilitar(ByVal parametro As String)
+        If parametro = "D" Then
+            Cursor = System.Windows.Forms.Cursors.WaitCursor
+            btnNoProcesados.Enabled = False
+            btnProcesar.Enabled = False
+            btnMails.Enabled = False
+            btnCuentas.Enabled = False
+        ElseIf parametro = "H" Then
+            Cursor = System.Windows.Forms.Cursors.Default
+            btnNoProcesados.Enabled = True
+            btnProcesar.Enabled = True
+            btnMails.Enabled = True
+            btnCuentas.Enabled = True
+        End If
+    End Function
+
     Private Sub btnProcesar_Click(sender As Object, e As EventArgs) Handles btnProcesar.Click
         Cursor = System.Windows.Forms.Cursors.WaitCursor
         btnNoProcesados.Enabled = False
         btnProcesar.Enabled = False
+        btnMails.Enabled = False
+        btnCuentas.Enabled = False
         pbCheque.Visible = True
         pbTodos.Visible = True
         pbTodos.Value = 1
@@ -250,6 +284,8 @@ Public Class frmPrincipal
         Cursor = System.Windows.Forms.Cursors.Default
         btnNoProcesados.Enabled = True
         btnProcesar.Enabled = True
+        btnMails.Enabled = True
+        btnCuentas.Enabled = True
     End Sub
 
     Public Function leeXML(docXML As String, nodo As String)
@@ -528,6 +564,12 @@ Public Class frmPrincipal
         MsgBox("CFDI's con complemento de recepción de pagos generados correctamente...", MsgBoxStyle.Information, "Complementos de recepción de pagos")
         btnTimbrar.Enabled = False
         Me.taCFDI_CompConsFactoraje.NProcFillBy(Me.dsProduction.CFDI_CompConsFactoraje)
+
+        Me.taCFDI_CompConsFactoraje.NProcXRFC_FillBy(Me.dsProduction.CFDI_CompConsFactoraje, cmbRFC.Text)
+        For i = 0 To dgvComplementos.Rows.Count - 1
+            Me.dgvComplementos.Item("dgDocRelacionado", i).Value = "UUID's Rel"
+        Next
+
     End Sub
     Public Function validaNullSA(valor As Object, imp As Decimal)
         If String.IsNullOrEmpty(valor) Then
