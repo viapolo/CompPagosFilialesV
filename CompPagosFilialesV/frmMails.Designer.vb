@@ -210,7 +210,7 @@ Partial Class frmMails
         Me.Controls.Add(Me.RFCTextBox)
         Me.Name = "frmMails"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmMails"
+        Me.Text = "Direcciones de correo destinatarios"
         CType(Me.CFDI_MailBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Production_AUXDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

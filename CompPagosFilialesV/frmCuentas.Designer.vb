@@ -206,7 +206,8 @@ Partial Class frmCuentas
         Me.Controls.Add(RFC_ClienteLabel)
         Me.Controls.Add(Me.RFC_ClienteTextBox)
         Me.Name = "frmCuentas"
-        Me.Text = "frmCuentas"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Cuentas bancarias origen"
         CType(Me.Production_AUXDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CFDI_CuentasClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CFDIBancosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
