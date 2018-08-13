@@ -36,7 +36,11 @@ Public Class frmUUIDRel
 
         If frmPrincipal.RFCTextBox.Text = "FGM790801SD7" Or frmPrincipal.RFCTextBox.Text = "PCO880928RD1" Or frmPrincipal.RFCTextBox.Text = "PPL8012295V2" Or frmPrincipal.RFCTextBox.Text = "MSU850911A56" Or frmPrincipal.RFCTextBox.Text = "PAM781201CW0" Or frmPrincipal.RFCTextBox.Text = "HPI880624SW5" Then
             Me.taVw_ChequesDetalle.DocRela_FillBy(Me.dsFactor100.Vw_ChequesDetalle, frmPrincipal.RFCTextBox.Text, frmPrincipal.ChequeTextBox.Text)
+            'MsgBox(dgvUUIDRelacionados.Rows.Count.ToString)
+            frmPrincipal.tspRegistrosPrincipal.Maximum = dgvUUIDRelacionados.Rows.Count
+            Dim contador As Integer = 0
             For Each row As DataGridViewRow In Me.dgvUUIDRelacionados.Rows
+                frmPrincipal.tspRegistrosPrincipal.Value = contador
                 Try
                     If row.Cells(3).Value.ToString.Length = 15 Then
                         Me.taCOFIDI.FillBy(Me.dsCOFIDI.CFDProveedor, row.Cells(3).Value.Insert(8, "-").Insert(13, "-"), row.Cells(1).Value)
@@ -78,6 +82,7 @@ Public Class frmUUIDRel
                 ElseIf dsCOFIDI.CFDProveedor.Rows.Count > 1 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Pink
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value = "-- " + dsCOFIDI.CFDProveedor.Rows.Count.ToString + " --"
+                    varBanderaUUID = True
                 ElseIf dsCOFIDI.CFDProveedor.Rows.Count = 0 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Purple
                 End If
@@ -87,7 +92,12 @@ Public Class frmUUIDRel
                     'totalPago += (Val(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value) * Val(Me.dgvUUIDRelacionados.Item("dgTC", row.Index).Value))
                     lblSugerencia.Text = (Val(Me.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", row.Index).Value) / Val(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value)).ToString("#,###.#00000")
                 End If
+                contador += 1
+                frmPrincipal.tslRegistrosPrincipal.Text = contador.ToString & " de " & dgvUUIDRelacionados.Rows.Count.ToString
+                frmPrincipal.Update()
             Next
+            frmPrincipal.tslRegistrosPrincipal.Text = ""
+            frmPrincipal.tspRegistrosPrincipal.Value = 0
         Else
 
 
@@ -132,6 +142,7 @@ Public Class frmUUIDRel
                 ElseIf dsCOFIDI.CFDProveedor.Rows.Count > 1 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Pink
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value = "-- " + dsWeb_Finagil.WEB_FacturasXML.Rows.Count.ToString + " --"
+                    varBanderaUUID = True
                 ElseIf dsCOFIDI.CFDProveedor.Rows.Count = 0 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Purple
                 End If
@@ -415,7 +426,7 @@ Public Class frmUUIDRel
                 rowCFD_CPAGO._3_DetalleAux_Misc01 = "HD"
                 rowCFD_CPAGO._4_DetalleAux_Misc02 = dgvUUIDRelacionados.Item("dgUUID", row.Index).Value
                 rowCFD_CPAGO._5_DetalleAux_Misc03 = dgvUUIDRelacionados.Item("dgSerie", row.Index).Value + ""
-                rowCFD_CPAGO._6_DetalleAux_Misc04 = dgvUUIDRelacionados.Item("dgFolio", row.Index).Value + ""
+                rowCFD_CPAGO._6_DetalleAux_Misc04 = SoloNumeros(dgvUUIDRelacionados.Item("dgFolio", row.Index).Value + "")
                 rowCFD_CPAGO._7_DetalleAux_Misc05 = dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value
                 If rowCFD_CPAGO._7_DetalleAux_Misc05 = "MXN" Then
                     rowCFD_CPAGO._8_DetalleAux_Misc06 = ""
@@ -585,7 +596,7 @@ Public Class frmUUIDRel
                     rowCFD_CPAGO._3_DetalleAux_Misc01 = "HD"
                     rowCFD_CPAGO._4_DetalleAux_Misc02 = dgvUUIDRelacionados.Item("dgUUID", row.Index).Value
                     rowCFD_CPAGO._5_DetalleAux_Misc03 = dgvUUIDRelacionados.Item("dgSerie", row.Index).Value
-                    rowCFD_CPAGO._6_DetalleAux_Misc04 = dgvUUIDRelacionados.Item("dgFolio", row.Index).Value
+                    rowCFD_CPAGO._6_DetalleAux_Misc04 = SoloNumeros(dgvUUIDRelacionados.Item("dgFolio", row.Index).Value)
                     rowCFD_CPAGO._7_DetalleAux_Misc05 = dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value
                     If rowCFD_CPAGO._7_DetalleAux_Misc05 = "MXN" Then
                         rowCFD_CPAGO._8_DetalleAux_Misc06 = ""
@@ -626,23 +637,20 @@ Public Class frmUUIDRel
     End Sub
 
 
-    Private Sub dgvUUIDRelacionados_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUUIDRelacionados.CellValueChanged
-        'totalPago = 0
-        For Each row As DataGridViewRow In Me.dgvUUIDRelacionados.Rows
-            Try
-                If CDbl(validaNullN(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value)) = CDbl(Me.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", row.Index).Value) Then
-                    Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Green
-                Else
-                    Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).ReadOnly = True
-                    Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Red
-                End If
-            Catch
-            End Try
-            'totalPago += Val(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value)
-        Next
-        'Me.tslblSumaUUID.Text = totalPago.ToString("$#,###.#0")
-        actualizar_sin()
-    End Sub
+    'Private Sub dgvUUIDRelacionados_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUUIDRelacionados.CellValueChanged
+    '    For Each row As DataGridViewRow In Me.dgvUUIDRelacionados.Rows
+    '        Try
+    '            If CDbl(validaNullN(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value)) = CDbl(Me.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", row.Index).Value) Then
+    '                Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Green
+    '            Else
+    '                Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).ReadOnly = True
+    '                Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Red
+    '            End If
+    '        Catch
+    '        End Try
+    '    Next
+    '    actualizar_sin()
+    'End Sub
 
     Private Sub dgvUUIDRelacionados_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUUIDRelacionados.CellEndEdit
         Try
@@ -780,5 +788,17 @@ Public Class frmUUIDRel
                 Next
             Next
         End If
+    End Function
+
+    Public Function SoloNumeros(ByVal strCadena As String) As Long
+        Dim i As Integer
+        For i = 1 To Len(strCadena)
+            If Mid$(strCadena, i, 1) Like "#" Then _
+            SoloNumeros = CLng(SoloNumeros & Mid$(strCadena, i, 1))
+        Next i
+        If SoloNumeros.ToString.Length <> 0 And SoloNumeros.ToString.Length > 8 Then
+            SoloNumeros = CLng(SoloNumeros.ToString.Substring(0, 8))
+        End If
+        Return SoloNumeros
     End Function
 End Class

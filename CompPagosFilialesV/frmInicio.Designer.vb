@@ -26,8 +26,8 @@ Partial Class frmPrincipal
         Dim RFCLabel As System.Windows.Forms.Label
         Dim ChequeLabel As System.Windows.Forms.Label
         Dim MontoLabel As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvComplementos = New System.Windows.Forms.DataGridView()
         Me.RFCDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ChequeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -68,6 +68,9 @@ Partial Class frmPrincipal
         Me.CFDI_CuentasClientesTableAdapter = New CompPagosFilialesV.Production_AUXDataSetTableAdapters.CFDI_CuentasClientesTableAdapter()
         Me.btnMails = New System.Windows.Forms.Button()
         Me.btnCuentas = New System.Windows.Forms.Button()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.tspRegistrosPrincipal = New System.Windows.Forms.ToolStripProgressBar()
+        Me.tslRegistrosPrincipal = New System.Windows.Forms.ToolStripStatusLabel()
         RFCLabel = New System.Windows.Forms.Label()
         ChequeLabel = New System.Windows.Forms.Label()
         MontoLabel = New System.Windows.Forms.Label()
@@ -78,6 +81,7 @@ Partial Class frmPrincipal
         CType(Me.Factor100DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Factor100DataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CFDICuentasClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'RFCLabel
@@ -158,18 +162,18 @@ Partial Class frmPrincipal
         'MontoDataGridViewTextBoxColumn
         '
         Me.MontoDataGridViewTextBoxColumn.DataPropertyName = "Monto"
-        DataGridViewCellStyle5.Format = "C2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.MontoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.MontoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.MontoDataGridViewTextBoxColumn.HeaderText = "Monto"
         Me.MontoDataGridViewTextBoxColumn.Name = "MontoDataGridViewTextBoxColumn"
         '
         'FechaPagoDataGridViewTextBoxColumn
         '
         Me.FechaPagoDataGridViewTextBoxColumn.DataPropertyName = "FechaPago"
-        DataGridViewCellStyle6.Format = "G"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.FechaPagoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Format = "G"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.FechaPagoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.FechaPagoDataGridViewTextBoxColumn.HeaderText = "FechaPago"
         Me.FechaPagoDataGridViewTextBoxColumn.Name = "FechaPagoDataGridViewTextBoxColumn"
         '
@@ -395,11 +399,31 @@ Partial Class frmPrincipal
         Me.btnCuentas.Text = "Cuentas"
         Me.btnCuentas.UseVisualStyleBackColor = True
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tspRegistrosPrincipal, Me.tslRegistrosPrincipal})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 463)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1307, 22)
+        Me.StatusStrip1.TabIndex = 15
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'tspRegistrosPrincipal
+        '
+        Me.tspRegistrosPrincipal.Name = "tspRegistrosPrincipal"
+        Me.tspRegistrosPrincipal.Size = New System.Drawing.Size(100, 16)
+        '
+        'tslRegistrosPrincipal
+        '
+        Me.tslRegistrosPrincipal.Name = "tslRegistrosPrincipal"
+        Me.tslRegistrosPrincipal.Size = New System.Drawing.Size(0, 17)
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1307, 457)
+        Me.ClientSize = New System.Drawing.Size(1307, 485)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.btnCuentas)
         Me.Controls.Add(Me.btnMails)
         Me.Controls.Add(Me.btnTimbrar)
@@ -425,6 +449,8 @@ Partial Class frmPrincipal
         CType(Me.Factor100DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Factor100DataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CFDICuentasClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -470,4 +496,7 @@ Partial Class frmPrincipal
     Friend WithEvents CFDI_CuentasClientesTableAdapter As Production_AUXDataSetTableAdapters.CFDI_CuentasClientesTableAdapter
     Friend WithEvents btnMails As Button
     Friend WithEvents btnCuentas As Button
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents tspRegistrosPrincipal As ToolStripProgressBar
+    Friend WithEvents tslRegistrosPrincipal As ToolStripStatusLabel
 End Class

@@ -8,7 +8,7 @@ Public Class frmUUIDRelC
     End Sub
 
     Private Sub frmUUIDRelC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If frmUUIDRel.ts2.Text.Length <= 8 Then
+        If frmUUIDRel.ts2.Text.Length <= 8 And varBanderaUUID = True Then
             Try
                 Me.CFDProveedorTableAdapter.FillBy(Me.ATEBCOFIDIRECDataSet.CFDProveedor, frmUUIDRel.ts2.Text.ToString, frmUUIDRel.ts1.Text)
             Catch
@@ -20,7 +20,7 @@ Public Class frmUUIDRelC
             End Try
         End If
 
-        If CFDProveedorDataGridView.Rows.Count = 1 And CFDProveedorDataGridView.Item("DataGridViewTextBoxColumn28", 0).Value = "" And varBanderaUUID = False Then
+        If CFDProveedorDataGridView.Rows.Count = 1 And CFDProveedorDataGridView.Item("DataGridViewTextBoxColumn28", 0).Value = Nothing And varBanderaUUID = False Then
             Dim fUUID As String = InputBox("Ingrese folio fiscal del comprobante a relacionar: ").ToString
             If fUUID.Length = 36 Then
                 fUUID = fUUID.Substring(0, 16).Replace("-", "")
@@ -49,6 +49,7 @@ Public Class frmUUIDRelC
 
     Private Sub CFDProveedorDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles CFDProveedorDataGridView.CellClick
         Try
+            varBanderaUUID = False
             'Folio fiscal
             frmUUIDRel.dgvUUIDRelacionados.Item(5, CInt(frmUUIDRel.ts4.Text)).Value = CFDProveedorDataGridView.Item("DataGridViewTextBoxColumn28", e.RowIndex).Value
             'MPago
