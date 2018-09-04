@@ -169,6 +169,9 @@ Public Class frmUUIDRel
                 retorno(0) = retorno(0) + Val
             End If
         Next
+        If retorno(0) = Nothing Then
+            retorno(0) = ""
+        End If
         Return retorno
     End Function
 
