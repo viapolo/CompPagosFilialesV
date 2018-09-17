@@ -96,8 +96,10 @@ Public Class frmPrincipal
                     rowheader.NumOperacion = rows.Cheque
                     rowheader.RFCEmisorCtaOrd = validaNull(taCFDI_CtasPAGO.Obt_RFC_Banco_FillBy(rows.RFC))
                     rowheader.NomBancoOrdExt = validaNull(taCFDI_Bancos.Obtiene_Nombre_Banco(rowheader.RFCEmisorCtaOrd))
-                    If rowheader.NomBancoOrdExt.Length > 0 Then
+                    If rowheader.NomBancoOrdExt.Length > 50 Then
                         rowheader.NomBancoOrdExt = rowheader.NomBancoOrdExt.ToString.Substring(0, 49)
+                    ElseIf rowheader.NomBancoOrdExt.Length < 50 Then
+                        rowheader.NomBancoOrdExt = rowheader.NomBancoOrdExt
                     End If
                     rowheader.CtaOrdenante = validaNull(taCFDI_CtasPAGO.Obt_Cta_Banco_FillBy(rows.RFC))
                     rowheader.RFCEmisorCtaBen = "BBA830831LJ2"
@@ -107,6 +109,7 @@ Public Class frmPrincipal
                     taConsecutivo.Update(dsConsecutivo.CFDI_CompConsFactoraje)
 
                 Catch ex As Exception
+                    'MsgBox(ex.ToString)
                 End Try
                 dsConsecutivo.CFDI_CompConsFactoraje.Clear()
             Next
@@ -232,6 +235,38 @@ Public Class frmPrincipal
                     Dim rowsD4 As ATEBCOFIDIRECDataSet.CFDProveedorRow
                     For Each rowsD4 In dsCOFIDI.CFDProveedor.Rows()
                         importeXML += Val(validaNull(leeXML(rowsD4.CFDOriginal, "Total")))
+                    Next
+                    pbCheque.Value += 1
+                Next
+
+                If Math.Round(importeXML, 2) = dgvComplementos.Item("MontoDataGridViewTextBoxColumn", i).Value Then
+                    Me.dgvComplementos.Item("MontoDataGridViewTextBoxColumn", i).Style.BackColor = Color.Green
+                    Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).ReadOnly = False
+                    verdes += 1
+                Else
+                    Me.dgvComplementos.Item("MontoDataGridViewTextBoxColumn", i).Style.BackColor = Color.Firebrick
+                    Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).ReadOnly = True
+                End If
+                Me.Refresh()
+                pbTodos.Value += 1
+            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Then
+                'NO FILIALES
+                Me.taComplementos.DocRela_FillBy(Me.dsComplemento.Vw_ChequesDetalle, dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value, dgvComplementos.Item("ChequeDataGridViewTextBoxColumn", i).Value)
+                Dim importeXML As Double = 0
+                Dim rowsD3 As Factor100DataSet.Vw_ChequesDetalleRow
+                pbCheque.Value = 1
+                pbCheque.Step = 1
+                pbCheque.Maximum = dsComplemento.Vw_ChequesDetalle.Rows.Count + 1
+                For Each rowsD3 In dsComplemento.Vw_ChequesDetalle.Rows()
+                    Dim SF() As String = regresaSF(rowsD3.Referencia)
+                    Try
+                        'Me.taWeb_Finagil.Obt_CFDI_FillBy(Me.dsWeb_Finagil.WEB_FacturasXML, SF(0), SF(1))
+                        Me.taWeb_Finagil.Obt_CFDI_SoloFolio_FillBy(Me.dsWeb_Finagil.WEB_FacturasXML, SF(1), dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value)
+                    Catch
+                    End Try
+                    Dim rowsD4 As WEB_FinagilDataSet.WEB_FacturasXMLRow
+                    For Each rowsD4 In dsWeb_Finagil.WEB_FacturasXML.Rows()
+                        importeXML += Math.Round(Val(rowsD4.ImporteFactura), 2)
                     Next
                     pbCheque.Value += 1
                 Next
@@ -726,7 +761,7 @@ Public Class frmPrincipal
                             rowCFD_CPAGO._3_DetalleAux_Misc01 = "HD"
                             rowCFD_CPAGO._4_DetalleAux_Misc02 = rowsD4.UUID 'dgvUUIDRelacionados.Item("dgUUID", row.Index).Value
                             rowCFD_CPAGO._5_DetalleAux_Misc03 = rowsD4.Serie + "" 'dgvUUIDRelacionados.Item("dgSerie", row.Index).Value
-                            rowCFD_CPAGO._6_DetalleAux_Misc04 = rowsD4.UUID + "" 'dgvUUIDRelacionados.Item("dgFolio", row.Index).Value
+                            rowCFD_CPAGO._6_DetalleAux_Misc04 = rowsD4.Folio  'dgvUUIDRelacionados.Item("dgFolio", row.Index).Value
                             rowCFD_CPAGO._7_DetalleAux_Misc05 = rowsD4.Moneda 'validaNull(leeXML(rowsD4.CFDOriginal, "Moneda")) 'dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value
 
                             If rowCFD_CPAGO._7_DetalleAux_Misc05 = "MXN" Then

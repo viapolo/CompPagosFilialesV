@@ -98,9 +98,60 @@ Public Class frmUUIDRel
             Next
             frmPrincipal.tslRegistrosPrincipal.Text = ""
             frmPrincipal.tspRegistrosPrincipal.Value = 0
+        ElseIf frmPrincipal.RFCTextBox.Text = "DME061031H27" Then
+            Me.taVw_ChequesDetalle.DocRela_FillBy(Me.dsFactor100.Vw_ChequesDetalle, frmPrincipal.RFCTextBox.Text, frmPrincipal.ChequeTextBox.Text)
+            For Each row As DataGridViewRow In Me.dgvUUIDRelacionados.Rows
+                Dim SF() As String = regresaSF(row.Cells(3).Value)
+                Try
+                    'Me.taCOFIDI.FillBy(Me.dsCOFIDI.CFDProveedor, row.Cells(3).Value.Insert(8, "-").Insert(13, "-"), row.Cells(1).Value)
+                    'Me.taWeb_Finagil.Obt_CFDI_FillBy(Me.dsWeb_Finagil.WEB_FacturasXML, SF(0), SF(1))
+                    Me.taWeb_Finagil.Obt_CFDI_SoloFolio_FillBy(Me.dsWeb_Finagil.WEB_FacturasXML, SF(1), frmPrincipal.RFCTextBox.Text)
+                Catch
+
+                End Try
+                Dim rowUUID As WEB_FinagilDataSet.WEB_FacturasXMLRow
+                If dsWeb_Finagil.WEB_FacturasXML.Rows.Count = 1 Then
+                    For Each rowUUID In dsWeb_Finagil.WEB_FacturasXML.Rows()
+                        Me.dgvUUIDRelacionados.Item("dgUUID", row.Index).Value = rowUUID.UUID
+                        Me.dgvUUIDRelacionados.Item("dgMPago", row.Index).Value = rowUUID.MPago
+                        Me.dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value = rowUUID.Moneda
+                        Me.dgvUUIDRelacionados.Item("dgTC", row.Index).Value = rowUUID.TCambio.ToString.Replace("0.000000", "")
+                        Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value = rowUUID.ImporteFactura
+                        Me.dgvUUIDRelacionados.Item("dgSerie", row.Index).Value = SF(0)
+                        Me.dgvUUIDRelacionados.Item("dgFolio", row.Index).Value = SF(1)
+                        Me.dgvUUIDRelacionados.Item("dgSaldo", row.Index).Value = taCFDI_CPAGO.ObtieneSaldoAnterior(rowUUID.UUID) - Me.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", row.Index).Value
+                        Me.dgvUUIDRelacionados.Item("dgDiferencia", row.Index).Value = (CDbl(validaNullN(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value)) - CDbl(Me.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", row.Index).Value)).ToString("#,###.#0")
+                        If (Val(Me.dgvUUIDRelacionados.Item("dgDiferencia", row.Index).Value) >= -1.0 And Val(Me.dgvUUIDRelacionados.Item("dgDiferencia", row.Index).Value) < 0) And Me.dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value = "MXN" Then
+                            Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value = Me.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", row.Index).Value
+                            Me.dgvUUIDRelacionados.Item("dgDiferencia", row.Index).Value = (CDbl(validaNullN(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value)) - CDbl(Me.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", row.Index).Value)).ToString("#,###.#0")
+                        End If
+                        If (Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value) = CDbl(Me.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", row.Index).Value) Then
+                            Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Green
+                        Else
+                            Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).ReadOnly = True
+                            Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Red
+                            Me.dgvUUIDRelacionados.Item("dgTC", row.Index).ReadOnly = False
+                        End If
+                    Next
+                    If Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value.ToString = "" Then
+                        Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).ReadOnly = False
+                        Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Red
+                    End If
+                ElseIf dsCOFIDI.CFDProveedor.Rows.Count > 1 Then
+                    Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Pink
+                    Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value = "-- " + dsWeb_Finagil.WEB_FacturasXML.Rows.Count.ToString + " --"
+                    varBanderaUUID = True
+                ElseIf dsCOFIDI.CFDProveedor.Rows.Count = 0 Then
+                    Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Purple
+                End If
+                If Me.dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value = "MXN" Then
+                    'totalPago += Val(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value)
+                Else
+                    'totalPago += (Val(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value) * Val(Me.dgvUUIDRelacionados.Item("dgTC", row.Index).Value))
+                    lblSugerencia.Text = (Val(Me.dgvUUIDRelacionados.Item("ImporteDataGridViewTextBoxColumn", row.Index).Value) / Val(Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value)).ToString("#,###.#00000")
+                End If
+            Next
         Else
-
-
             Me.taVw_ChequesDetalle.DocRela_FillBy(Me.dsFactor100.Vw_ChequesDetalle, frmPrincipal.RFCTextBox.Text, frmPrincipal.ChequeTextBox.Text)
             For Each row As DataGridViewRow In Me.dgvUUIDRelacionados.Rows
                 Dim SF() As String = regresaSF(row.Cells(3).Value)

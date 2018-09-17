@@ -29,6 +29,31 @@ Partial Class frmPrincipal
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvComplementos = New System.Windows.Forms.DataGridView()
+        Me.bsCFDICompConsFactoraje = New System.Windows.Forms.BindingSource(Me.components)
+        Me.dsProduction = New CompPagosFilialesV.Production_AUXDataSet()
+        Me.btnNoProcesados = New System.Windows.Forms.Button()
+        Me.RFCTextBox = New System.Windows.Forms.TextBox()
+        Me.ChequeTextBox = New System.Windows.Forms.TextBox()
+        Me.MontoTextBox = New System.Windows.Forms.TextBox()
+        Me.cmbRFC = New System.Windows.Forms.ComboBox()
+        Me.btnProcesar = New System.Windows.Forms.Button()
+        Me.pbTodos = New System.Windows.Forms.ProgressBar()
+        Me.pbCheque = New System.Windows.Forms.ProgressBar()
+        Me.btnTimbrar = New System.Windows.Forms.Button()
+        Me.fbdCargarXML = New System.Windows.Forms.FolderBrowserDialog()
+        Me.CFDICuentasClientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.taCFDI_CompConsFactoraje = New CompPagosFilialesV.Production_AUXDataSetTableAdapters.CFDI_CompConsFactorajeTableAdapter()
+        Me.TableAdapterManager = New CompPagosFilialesV.Production_AUXDataSetTableAdapters.TableAdapterManager()
+        Me.CFDI_CuentasClientesTableAdapter = New CompPagosFilialesV.Production_AUXDataSetTableAdapters.CFDI_CuentasClientesTableAdapter()
+        Me.btnMails = New System.Windows.Forms.Button()
+        Me.btnCuentas = New System.Windows.Forms.Button()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.tspRegistrosPrincipal = New System.Windows.Forms.ToolStripProgressBar()
+        Me.tslRegistrosPrincipal = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.VwChequesDetalleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Factor100DataSet = New CompPagosFilialesV.Factor100DataSet()
+        Me.Factor100DataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Vw_ChequesDetalleTableAdapter = New CompPagosFilialesV.Factor100DataSetTableAdapters.Vw_ChequesDetalleTableAdapter()
         Me.RFCDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ChequeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReferenciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -46,42 +71,17 @@ Partial Class frmPrincipal
         Me.CtaBeneficiarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProcesadoDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.dgDocRelacionado = New System.Windows.Forms.DataGridViewLinkColumn()
-        Me.bsCFDICompConsFactoraje = New System.Windows.Forms.BindingSource(Me.components)
-        Me.dsProduction = New CompPagosFilialesV.Production_AUXDataSet()
-        Me.btnNoProcesados = New System.Windows.Forms.Button()
-        Me.RFCTextBox = New System.Windows.Forms.TextBox()
-        Me.ChequeTextBox = New System.Windows.Forms.TextBox()
-        Me.MontoTextBox = New System.Windows.Forms.TextBox()
-        Me.cmbRFC = New System.Windows.Forms.ComboBox()
-        Me.btnProcesar = New System.Windows.Forms.Button()
-        Me.pbTodos = New System.Windows.Forms.ProgressBar()
-        Me.pbCheque = New System.Windows.Forms.ProgressBar()
-        Me.btnTimbrar = New System.Windows.Forms.Button()
-        Me.fbdCargarXML = New System.Windows.Forms.FolderBrowserDialog()
-        Me.VwChequesDetalleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Factor100DataSet = New CompPagosFilialesV.Factor100DataSet()
-        Me.Factor100DataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Vw_ChequesDetalleTableAdapter = New CompPagosFilialesV.Factor100DataSetTableAdapters.Vw_ChequesDetalleTableAdapter()
-        Me.CFDICuentasClientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.taCFDI_CompConsFactoraje = New CompPagosFilialesV.Production_AUXDataSetTableAdapters.CFDI_CompConsFactorajeTableAdapter()
-        Me.TableAdapterManager = New CompPagosFilialesV.Production_AUXDataSetTableAdapters.TableAdapterManager()
-        Me.CFDI_CuentasClientesTableAdapter = New CompPagosFilialesV.Production_AUXDataSetTableAdapters.CFDI_CuentasClientesTableAdapter()
-        Me.btnMails = New System.Windows.Forms.Button()
-        Me.btnCuentas = New System.Windows.Forms.Button()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.tspRegistrosPrincipal = New System.Windows.Forms.ToolStripProgressBar()
-        Me.tslRegistrosPrincipal = New System.Windows.Forms.ToolStripStatusLabel()
         RFCLabel = New System.Windows.Forms.Label()
         ChequeLabel = New System.Windows.Forms.Label()
         MontoLabel = New System.Windows.Forms.Label()
         CType(Me.dgvComplementos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsCFDICompConsFactoraje, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dsProduction, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CFDICuentasClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         CType(Me.VwChequesDetalleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Factor100DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Factor100DataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CFDICuentasClientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'RFCLabel
@@ -123,128 +123,6 @@ Partial Class frmPrincipal
         Me.dgvComplementos.Name = "dgvComplementos"
         Me.dgvComplementos.Size = New System.Drawing.Size(1307, 370)
         Me.dgvComplementos.TabIndex = 0
-        '
-        'RFCDataGridViewTextBoxColumn
-        '
-        Me.RFCDataGridViewTextBoxColumn.DataPropertyName = "RFC"
-        Me.RFCDataGridViewTextBoxColumn.HeaderText = "RFC"
-        Me.RFCDataGridViewTextBoxColumn.Name = "RFCDataGridViewTextBoxColumn"
-        Me.RFCDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ChequeDataGridViewTextBoxColumn
-        '
-        Me.ChequeDataGridViewTextBoxColumn.DataPropertyName = "Cheque"
-        Me.ChequeDataGridViewTextBoxColumn.HeaderText = "Cheque"
-        Me.ChequeDataGridViewTextBoxColumn.Name = "ChequeDataGridViewTextBoxColumn"
-        Me.ChequeDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ReferenciaDataGridViewTextBoxColumn
-        '
-        Me.ReferenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia"
-        Me.ReferenciaDataGridViewTextBoxColumn.HeaderText = "Referencia"
-        Me.ReferenciaDataGridViewTextBoxColumn.Name = "ReferenciaDataGridViewTextBoxColumn"
-        Me.ReferenciaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SerieCFDIDataGridViewTextBoxColumn
-        '
-        Me.SerieCFDIDataGridViewTextBoxColumn.DataPropertyName = "Serie_CFDI"
-        Me.SerieCFDIDataGridViewTextBoxColumn.HeaderText = "Serie_CFDI"
-        Me.SerieCFDIDataGridViewTextBoxColumn.Name = "SerieCFDIDataGridViewTextBoxColumn"
-        Me.SerieCFDIDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FolioCFDIDataGridViewTextBoxColumn
-        '
-        Me.FolioCFDIDataGridViewTextBoxColumn.DataPropertyName = "Folio_CFDI"
-        Me.FolioCFDIDataGridViewTextBoxColumn.HeaderText = "Folio_CFDI"
-        Me.FolioCFDIDataGridViewTextBoxColumn.Name = "FolioCFDIDataGridViewTextBoxColumn"
-        Me.FolioCFDIDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'MontoDataGridViewTextBoxColumn
-        '
-        Me.MontoDataGridViewTextBoxColumn.DataPropertyName = "Monto"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.MontoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.MontoDataGridViewTextBoxColumn.HeaderText = "Monto"
-        Me.MontoDataGridViewTextBoxColumn.Name = "MontoDataGridViewTextBoxColumn"
-        '
-        'FechaPagoDataGridViewTextBoxColumn
-        '
-        Me.FechaPagoDataGridViewTextBoxColumn.DataPropertyName = "FechaPago"
-        DataGridViewCellStyle2.Format = "G"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.FechaPagoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.FechaPagoDataGridViewTextBoxColumn.HeaderText = "FechaPago"
-        Me.FechaPagoDataGridViewTextBoxColumn.Name = "FechaPagoDataGridViewTextBoxColumn"
-        '
-        'FormaDePagoPDataGridViewTextBoxColumn
-        '
-        Me.FormaDePagoPDataGridViewTextBoxColumn.DataPropertyName = "FormaDePagoP"
-        Me.FormaDePagoPDataGridViewTextBoxColumn.HeaderText = "FormaDePagoP"
-        Me.FormaDePagoPDataGridViewTextBoxColumn.Name = "FormaDePagoPDataGridViewTextBoxColumn"
-        Me.FormaDePagoPDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'MonedaPDataGridViewTextBoxColumn
-        '
-        Me.MonedaPDataGridViewTextBoxColumn.DataPropertyName = "MonedaP"
-        Me.MonedaPDataGridViewTextBoxColumn.HeaderText = "MonedaP"
-        Me.MonedaPDataGridViewTextBoxColumn.Name = "MonedaPDataGridViewTextBoxColumn"
-        Me.MonedaPDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NumOperacionDataGridViewTextBoxColumn
-        '
-        Me.NumOperacionDataGridViewTextBoxColumn.DataPropertyName = "NumOperacion"
-        Me.NumOperacionDataGridViewTextBoxColumn.HeaderText = "NumOperacion"
-        Me.NumOperacionDataGridViewTextBoxColumn.Name = "NumOperacionDataGridViewTextBoxColumn"
-        Me.NumOperacionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'RFCEmisorCtaOrdDataGridViewTextBoxColumn
-        '
-        Me.RFCEmisorCtaOrdDataGridViewTextBoxColumn.DataPropertyName = "RFCEmisorCtaOrd"
-        Me.RFCEmisorCtaOrdDataGridViewTextBoxColumn.HeaderText = "RFCEmisorCtaOrd"
-        Me.RFCEmisorCtaOrdDataGridViewTextBoxColumn.Name = "RFCEmisorCtaOrdDataGridViewTextBoxColumn"
-        Me.RFCEmisorCtaOrdDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NomBancoOrdExtDataGridViewTextBoxColumn
-        '
-        Me.NomBancoOrdExtDataGridViewTextBoxColumn.DataPropertyName = "NomBancoOrdExt"
-        Me.NomBancoOrdExtDataGridViewTextBoxColumn.HeaderText = "NomBancoOrdExt"
-        Me.NomBancoOrdExtDataGridViewTextBoxColumn.Name = "NomBancoOrdExtDataGridViewTextBoxColumn"
-        Me.NomBancoOrdExtDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CtaOrdenanteDataGridViewTextBoxColumn
-        '
-        Me.CtaOrdenanteDataGridViewTextBoxColumn.DataPropertyName = "CtaOrdenante"
-        Me.CtaOrdenanteDataGridViewTextBoxColumn.HeaderText = "CtaOrdenante"
-        Me.CtaOrdenanteDataGridViewTextBoxColumn.Name = "CtaOrdenanteDataGridViewTextBoxColumn"
-        Me.CtaOrdenanteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'RFCEmisorCtaBenDataGridViewTextBoxColumn
-        '
-        Me.RFCEmisorCtaBenDataGridViewTextBoxColumn.DataPropertyName = "RFCEmisorCtaBen"
-        Me.RFCEmisorCtaBenDataGridViewTextBoxColumn.HeaderText = "RFCEmisorCtaBen"
-        Me.RFCEmisorCtaBenDataGridViewTextBoxColumn.Name = "RFCEmisorCtaBenDataGridViewTextBoxColumn"
-        Me.RFCEmisorCtaBenDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CtaBeneficiarioDataGridViewTextBoxColumn
-        '
-        Me.CtaBeneficiarioDataGridViewTextBoxColumn.DataPropertyName = "CtaBeneficiario"
-        Me.CtaBeneficiarioDataGridViewTextBoxColumn.HeaderText = "CtaBeneficiario"
-        Me.CtaBeneficiarioDataGridViewTextBoxColumn.Name = "CtaBeneficiarioDataGridViewTextBoxColumn"
-        Me.CtaBeneficiarioDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ProcesadoDataGridViewCheckBoxColumn
-        '
-        Me.ProcesadoDataGridViewCheckBoxColumn.HeaderText = "¿Procesar?"
-        Me.ProcesadoDataGridViewCheckBoxColumn.Name = "ProcesadoDataGridViewCheckBoxColumn"
-        Me.ProcesadoDataGridViewCheckBoxColumn.ReadOnly = True
-        '
-        'dgDocRelacionado
-        '
-        Me.dgDocRelacionado.HeaderText = "Doc Rel"
-        Me.dgDocRelacionado.Name = "dgDocRelacionado"
-        Me.dgDocRelacionado.ReadOnly = True
-        Me.dgDocRelacionado.Text = "CFDI Rel"
         '
         'bsCFDICompConsFactoraje
         '
@@ -336,25 +214,6 @@ Partial Class frmPrincipal
         Me.btnTimbrar.Text = "Emitir CFDI con CP"
         Me.btnTimbrar.UseVisualStyleBackColor = True
         '
-        'VwChequesDetalleBindingSource
-        '
-        Me.VwChequesDetalleBindingSource.DataMember = "Vw_ChequesDetalle"
-        Me.VwChequesDetalleBindingSource.DataSource = Me.Factor100DataSet
-        '
-        'Factor100DataSet
-        '
-        Me.Factor100DataSet.DataSetName = "Factor100DataSet"
-        Me.Factor100DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Factor100DataSetBindingSource
-        '
-        Me.Factor100DataSetBindingSource.DataSource = Me.Factor100DataSet
-        Me.Factor100DataSetBindingSource.Position = 0
-        '
-        'Vw_ChequesDetalleTableAdapter
-        '
-        Me.Vw_ChequesDetalleTableAdapter.ClearBeforeFill = True
-        '
         'CFDICuentasClientesBindingSource
         '
         Me.CFDICuentasClientesBindingSource.DataMember = "CFDI_CuentasClientes"
@@ -418,6 +277,149 @@ Partial Class frmPrincipal
         Me.tslRegistrosPrincipal.Name = "tslRegistrosPrincipal"
         Me.tslRegistrosPrincipal.Size = New System.Drawing.Size(0, 17)
         '
+        'VwChequesDetalleBindingSource
+        '
+        Me.VwChequesDetalleBindingSource.DataMember = "Vw_ChequesDetalle"
+        Me.VwChequesDetalleBindingSource.DataSource = Me.Factor100DataSet
+        '
+        'Factor100DataSet
+        '
+        Me.Factor100DataSet.DataSetName = "Factor100DataSet"
+        Me.Factor100DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Factor100DataSetBindingSource
+        '
+        Me.Factor100DataSetBindingSource.DataSource = Me.Factor100DataSet
+        Me.Factor100DataSetBindingSource.Position = 0
+        '
+        'Vw_ChequesDetalleTableAdapter
+        '
+        Me.Vw_ChequesDetalleTableAdapter.ClearBeforeFill = True
+        '
+        'RFCDataGridViewTextBoxColumn
+        '
+        Me.RFCDataGridViewTextBoxColumn.DataPropertyName = "RFC"
+        Me.RFCDataGridViewTextBoxColumn.HeaderText = "RFC"
+        Me.RFCDataGridViewTextBoxColumn.Name = "RFCDataGridViewTextBoxColumn"
+        Me.RFCDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ChequeDataGridViewTextBoxColumn
+        '
+        Me.ChequeDataGridViewTextBoxColumn.DataPropertyName = "Cheque"
+        Me.ChequeDataGridViewTextBoxColumn.HeaderText = "Cheque"
+        Me.ChequeDataGridViewTextBoxColumn.Name = "ChequeDataGridViewTextBoxColumn"
+        Me.ChequeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ChequeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        '
+        'ReferenciaDataGridViewTextBoxColumn
+        '
+        Me.ReferenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia"
+        Me.ReferenciaDataGridViewTextBoxColumn.HeaderText = "Referencia"
+        Me.ReferenciaDataGridViewTextBoxColumn.Name = "ReferenciaDataGridViewTextBoxColumn"
+        Me.ReferenciaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SerieCFDIDataGridViewTextBoxColumn
+        '
+        Me.SerieCFDIDataGridViewTextBoxColumn.DataPropertyName = "Serie_CFDI"
+        Me.SerieCFDIDataGridViewTextBoxColumn.HeaderText = "Serie_CFDI"
+        Me.SerieCFDIDataGridViewTextBoxColumn.Name = "SerieCFDIDataGridViewTextBoxColumn"
+        Me.SerieCFDIDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FolioCFDIDataGridViewTextBoxColumn
+        '
+        Me.FolioCFDIDataGridViewTextBoxColumn.DataPropertyName = "Folio_CFDI"
+        Me.FolioCFDIDataGridViewTextBoxColumn.HeaderText = "Folio_CFDI"
+        Me.FolioCFDIDataGridViewTextBoxColumn.Name = "FolioCFDIDataGridViewTextBoxColumn"
+        Me.FolioCFDIDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'MontoDataGridViewTextBoxColumn
+        '
+        Me.MontoDataGridViewTextBoxColumn.DataPropertyName = "Monto"
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.MontoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        Me.MontoDataGridViewTextBoxColumn.HeaderText = "Monto"
+        Me.MontoDataGridViewTextBoxColumn.Name = "MontoDataGridViewTextBoxColumn"
+        '
+        'FechaPagoDataGridViewTextBoxColumn
+        '
+        Me.FechaPagoDataGridViewTextBoxColumn.DataPropertyName = "FechaPago"
+        DataGridViewCellStyle2.Format = "G"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.FechaPagoDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        Me.FechaPagoDataGridViewTextBoxColumn.HeaderText = "FechaPago"
+        Me.FechaPagoDataGridViewTextBoxColumn.Name = "FechaPagoDataGridViewTextBoxColumn"
+        Me.FechaPagoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'FormaDePagoPDataGridViewTextBoxColumn
+        '
+        Me.FormaDePagoPDataGridViewTextBoxColumn.DataPropertyName = "FormaDePagoP"
+        Me.FormaDePagoPDataGridViewTextBoxColumn.HeaderText = "FormaDePagoP"
+        Me.FormaDePagoPDataGridViewTextBoxColumn.Name = "FormaDePagoPDataGridViewTextBoxColumn"
+        Me.FormaDePagoPDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'MonedaPDataGridViewTextBoxColumn
+        '
+        Me.MonedaPDataGridViewTextBoxColumn.DataPropertyName = "MonedaP"
+        Me.MonedaPDataGridViewTextBoxColumn.HeaderText = "MonedaP"
+        Me.MonedaPDataGridViewTextBoxColumn.Name = "MonedaPDataGridViewTextBoxColumn"
+        Me.MonedaPDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NumOperacionDataGridViewTextBoxColumn
+        '
+        Me.NumOperacionDataGridViewTextBoxColumn.DataPropertyName = "NumOperacion"
+        Me.NumOperacionDataGridViewTextBoxColumn.HeaderText = "NumOperacion"
+        Me.NumOperacionDataGridViewTextBoxColumn.Name = "NumOperacionDataGridViewTextBoxColumn"
+        Me.NumOperacionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'RFCEmisorCtaOrdDataGridViewTextBoxColumn
+        '
+        Me.RFCEmisorCtaOrdDataGridViewTextBoxColumn.DataPropertyName = "RFCEmisorCtaOrd"
+        Me.RFCEmisorCtaOrdDataGridViewTextBoxColumn.HeaderText = "RFCEmisorCtaOrd"
+        Me.RFCEmisorCtaOrdDataGridViewTextBoxColumn.Name = "RFCEmisorCtaOrdDataGridViewTextBoxColumn"
+        Me.RFCEmisorCtaOrdDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NomBancoOrdExtDataGridViewTextBoxColumn
+        '
+        Me.NomBancoOrdExtDataGridViewTextBoxColumn.DataPropertyName = "NomBancoOrdExt"
+        Me.NomBancoOrdExtDataGridViewTextBoxColumn.HeaderText = "NomBancoOrdExt"
+        Me.NomBancoOrdExtDataGridViewTextBoxColumn.Name = "NomBancoOrdExtDataGridViewTextBoxColumn"
+        Me.NomBancoOrdExtDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CtaOrdenanteDataGridViewTextBoxColumn
+        '
+        Me.CtaOrdenanteDataGridViewTextBoxColumn.DataPropertyName = "CtaOrdenante"
+        Me.CtaOrdenanteDataGridViewTextBoxColumn.HeaderText = "CtaOrdenante"
+        Me.CtaOrdenanteDataGridViewTextBoxColumn.Name = "CtaOrdenanteDataGridViewTextBoxColumn"
+        Me.CtaOrdenanteDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'RFCEmisorCtaBenDataGridViewTextBoxColumn
+        '
+        Me.RFCEmisorCtaBenDataGridViewTextBoxColumn.DataPropertyName = "RFCEmisorCtaBen"
+        Me.RFCEmisorCtaBenDataGridViewTextBoxColumn.HeaderText = "RFCEmisorCtaBen"
+        Me.RFCEmisorCtaBenDataGridViewTextBoxColumn.Name = "RFCEmisorCtaBenDataGridViewTextBoxColumn"
+        Me.RFCEmisorCtaBenDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CtaBeneficiarioDataGridViewTextBoxColumn
+        '
+        Me.CtaBeneficiarioDataGridViewTextBoxColumn.DataPropertyName = "CtaBeneficiario"
+        Me.CtaBeneficiarioDataGridViewTextBoxColumn.HeaderText = "CtaBeneficiario"
+        Me.CtaBeneficiarioDataGridViewTextBoxColumn.Name = "CtaBeneficiarioDataGridViewTextBoxColumn"
+        Me.CtaBeneficiarioDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ProcesadoDataGridViewCheckBoxColumn
+        '
+        Me.ProcesadoDataGridViewCheckBoxColumn.HeaderText = "¿Procesar?"
+        Me.ProcesadoDataGridViewCheckBoxColumn.Name = "ProcesadoDataGridViewCheckBoxColumn"
+        Me.ProcesadoDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'dgDocRelacionado
+        '
+        Me.dgDocRelacionado.HeaderText = "Doc Rel"
+        Me.dgDocRelacionado.Name = "dgDocRelacionado"
+        Me.dgDocRelacionado.ReadOnly = True
+        Me.dgDocRelacionado.Text = "CFDI Rel"
+        '
         'frmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -445,12 +447,12 @@ Partial Class frmPrincipal
         CType(Me.dgvComplementos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsCFDICompConsFactoraje, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dsProduction, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwChequesDetalleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Factor100DataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Factor100DataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CFDICuentasClientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.VwChequesDetalleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Factor100DataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Factor100DataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -474,12 +476,19 @@ Partial Class frmPrincipal
     Friend WithEvents pbTodos As ProgressBar
     Friend WithEvents pbCheque As ProgressBar
     Friend WithEvents btnTimbrar As Button
+    Friend WithEvents fbdCargarXML As FolderBrowserDialog
+    Friend WithEvents CFDICuentasClientesBindingSource As BindingSource
+    Friend WithEvents CFDI_CuentasClientesTableAdapter As Production_AUXDataSetTableAdapters.CFDI_CuentasClientesTableAdapter
+    Friend WithEvents btnMails As Button
+    Friend WithEvents btnCuentas As Button
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents tspRegistrosPrincipal As ToolStripProgressBar
+    Friend WithEvents tslRegistrosPrincipal As ToolStripStatusLabel
     Friend WithEvents RFCDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ChequeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ReferenciaDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SerieCFDIDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FolioCFDIDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ProcesadoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
     Friend WithEvents MontoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FechaPagoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents FormaDePagoPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
@@ -490,13 +499,6 @@ Partial Class frmPrincipal
     Friend WithEvents CtaOrdenanteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents RFCEmisorCtaBenDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CtaBeneficiarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ProcesadoDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
     Friend WithEvents dgDocRelacionado As DataGridViewLinkColumn
-    Friend WithEvents fbdCargarXML As FolderBrowserDialog
-    Friend WithEvents CFDICuentasClientesBindingSource As BindingSource
-    Friend WithEvents CFDI_CuentasClientesTableAdapter As Production_AUXDataSetTableAdapters.CFDI_CuentasClientesTableAdapter
-    Friend WithEvents btnMails As Button
-    Friend WithEvents btnCuentas As Button
-    Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents tspRegistrosPrincipal As ToolStripProgressBar
-    Friend WithEvents tslRegistrosPrincipal As ToolStripStatusLabel
 End Class
