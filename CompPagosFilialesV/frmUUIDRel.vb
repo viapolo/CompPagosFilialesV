@@ -98,7 +98,7 @@ Public Class frmUUIDRel
             Next
             frmPrincipal.tslRegistrosPrincipal.Text = ""
             frmPrincipal.tspRegistrosPrincipal.Value = 0
-        ElseIf frmPrincipal.RFCTextBox.Text = "DME061031H27" Then
+        ElseIf frmPrincipal.RFCTextBox.Text = "DME061031H27" Or frmPrincipal.RFCTextBox.Text = "DIM061230LN8" Or frmPrincipal.RFCTextBox.Text = "DME061031H27" Then
             Me.taVw_ChequesDetalle.DocRela_FillBy(Me.dsFactor100.Vw_ChequesDetalle, frmPrincipal.RFCTextBox.Text, frmPrincipal.ChequeTextBox.Text)
             For Each row As DataGridViewRow In Me.dgvUUIDRelacionados.Rows
                 Dim SF() As String = regresaSF(row.Cells(3).Value)

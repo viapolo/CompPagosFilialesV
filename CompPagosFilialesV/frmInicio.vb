@@ -249,7 +249,7 @@ Public Class frmPrincipal
                 End If
                 Me.Refresh()
                 pbTodos.Value += 1
-            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Then
+            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DIM061230LN8" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "CVN140812CQ9" Then
                 'NO FILIALES
                 Me.taComplementos.DocRela_FillBy(Me.dsComplemento.Vw_ChequesDetalle, dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value, dgvComplementos.Item("ChequeDataGridViewTextBoxColumn", i).Value)
                 Dim importeXML As Double = 0
