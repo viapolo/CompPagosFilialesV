@@ -9,19 +9,19 @@ Public Class frmPrincipal
     Dim dsComplemento As New Factor100DataSet
 
     Dim taCFDI_CtasPAGO As New Production_AUXDataSetTableAdapters.CFDI_CuentasClientesTableAdapter
-    Dim dsCFDI_CtasPAGO As New Production_AUXDataSet
+    'Dim dsCFDI_CtasPAGO As New Production_AUXDataSet
 
     Dim taCOFIDI As New ATEBCOFIDIRECDataSetTableAdapters.CFDProveedorTableAdapter
     Dim dsCOFIDI As New ATEBCOFIDIRECDataSet
 
-    Dim taCOFIDI_Emp As New ATEBCOFIDIRECDataSetTableAdapters.EmpresaTableAdapter
-    Dim dsCOFIDI_Emp As New ATEBCOFIDIRECDataSet
+    'Dim taCOFIDI_Emp As New ATEBCOFIDIRECDataSetTableAdapters.EmpresaTableAdapter
+    'Dim dsCOFIDI_Emp As New ATEBCOFIDIRECDataSet
 
     Dim taCFDI_ENC As New Production_AUXDataSetTableAdapters.CFDI_EncabezadoTableAdapter
     Dim dsCFDI_ENC As New Production_AUXDataSet
 
     Dim taClientes As New Production_AUXDataSetTableAdapters.ClientesTableAdapter
-    Dim dsClientes As New Production_AUXDataSet
+    'Dim dsClientes As New Production_AUXDataSet
 
     Dim taCFDI_DET As New Production_AUXDataSetTableAdapters.CFDI_DetalleTableAdapter
     Dim dsCFDI_DET As New Production_AUXDataSet
@@ -64,7 +64,6 @@ Public Class frmPrincipal
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
-
     End Sub
 
     Private Sub btnNoProcesados_Click(sender As Object, e As EventArgs) Handles btnNoProcesados.Click
