@@ -20,8 +20,8 @@ Public Class frmUUIDRelC
             End Try
         End If
 
-        ' If CFDProveedorDataGridView.Rows.Count = 1 And CFDProveedorDataGridView.Item("DataGridViewTextBoxColumn28", 0).Value = Nothing And varBanderaUUID = False Then
-        Dim fUUID As String = InputBox("Ingrese folio fiscal del comprobante a relacionar: ").ToString
+        If CFDProveedorDataGridView.Rows.Count = 1 And CFDProveedorDataGridView.Item("DataGridViewTextBoxColumn28", 0).Value = Nothing And varBanderaUUID = False Then
+            Dim fUUID As String = InputBox("Ingrese folio fiscal del comprobante a relacionar: ").ToString
             If fUUID.Length = 36 Then
                 fUUID = fUUID.Substring(0, 16).Replace("-", "")
                 frmUUIDRel.dgvUUIDRelacionados.Item(3, CInt(frmUUIDRel.ts4.Text)).Value = fUUID
@@ -33,7 +33,7 @@ Public Class frmUUIDRelC
                 MsgBox("El UUID del comprobante no cumple con el patron correspondiente")
                 Me.Close()
             End If
-        'End If
+        End If
 
     End Sub
 
