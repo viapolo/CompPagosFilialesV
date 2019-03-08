@@ -2,7 +2,7 @@
 Public Class frmUUIDRelC
     Private Sub CFDProveedorBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
-        Me.CFDProveedorBindingSource.EndEdit()
+        Me.VwGPOFINAGILBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.ATEBCOFIDIRECDataSet)
 
     End Sub
@@ -10,12 +10,12 @@ Public Class frmUUIDRelC
     Private Sub frmUUIDRelC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If frmUUIDRel.ts2.Text.Length <= 8 And varBanderaUUID = True Then
             Try
-                Me.CFDProveedorTableAdapter.FillBy(Me.ATEBCOFIDIRECDataSet.CFDProveedor, frmUUIDRel.ts2.Text.ToString, frmUUIDRel.ts1.Text)
+                Me.Vw_GPO_FINAGILTableAdapter.Fill(Me.ATEBCOFIDIRECDataSet.vw_GPO_FINAGIL, frmUUIDRel.ts2.Text.ToString, frmUUIDRel.ts1.Text)
             Catch
             End Try
         Else
             Try
-                Me.CFDProveedorTableAdapter.FillBy(Me.ATEBCOFIDIRECDataSet.CFDProveedor, frmUUIDRel.ts2.Text.ToString.Insert(8, "-").Insert(13, "-"), frmUUIDRel.ts1.Text)
+                Me.Vw_GPO_FINAGILTableAdapter.Fill(Me.ATEBCOFIDIRECDataSet.vw_GPO_FINAGIL, frmUUIDRel.ts2.Text.ToString.Insert(8, "-").Insert(13, "-"), frmUUIDRel.ts1.Text)
             Catch
             End Try
         End If

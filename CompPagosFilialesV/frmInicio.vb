@@ -168,12 +168,14 @@ Public Class frmPrincipal
         Me.taCFDI_CompConsFactoraje.NProcXRFC_FillBy(Me.dsProduction.CFDI_CompConsFactoraje, cmbRFC.Text)
 
         For i = 0 To dgvComplementos.Rows.Count - 1
-            If cmbRFC.Text = "GTC980421R4A" Then
+            If cmbRFC.Text = "GTC980421R4A" Or cmbRFC.Text = "DME061031H27" Or cmbRFC.Text = "DIM061230LN8" Then
                 Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).ReadOnly = False
+                Me.dgvComplementos.Item("dgDocRelacionado", i).Value = "--"
+            Else
+                Me.dgvComplementos.Item("dgDocRelacionado", i).Value = "UUID's Rel"
             End If
-            Me.dgvComplementos.Item("dgDocRelacionado", i).Value = "UUID's Rel"
         Next
-        If cmbRFC.Text = "GTC980421R4A" Then
+        If cmbRFC.Text = "GTC980421R4A" Or cmbRFC.Text = "DME061031H27" Or cmbRFC.Text = "DIM061230LN8" Then
             btnProcesar.Enabled = False
             btnTimbrar.Enabled = True
         End If
@@ -257,7 +259,7 @@ Public Class frmPrincipal
                 End If
                 Me.Refresh()
                 pbTodos.Value += 1
-            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DIM061230LN8" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "CVN140812CQ9" Then
+            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27-" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DIM061230LN8-" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "CVN140812CQ9" Then
                 'NO FILIALES
                 Me.taComplementos.DocRela_FillBy(Me.dsComplemento.Vw_ChequesDetalle, dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value, dgvComplementos.Item("ChequeDataGridViewTextBoxColumn", i).Value)
                 Dim importeXML As Double = 0
@@ -289,7 +291,7 @@ Public Class frmPrincipal
                 End If
                 Me.Refresh()
                 pbTodos.Value += 1
-            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "GTC980421R4A" Then
+            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "GTC980421R4A" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DIM061230LN8" Then
                 'NO FILIALES
                 Me.taComplementos.DocRela_FillBy(Me.dsComplemento.Vw_ChequesDetalle, dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value, dgvComplementos.Item("ChequeDataGridViewTextBoxColumn", i).Value)
                 Dim importeXML As Double = 0
@@ -607,7 +609,7 @@ Public Class frmPrincipal
                     Next
                     taConsecutivo.ActAProcesado(rowCFDI_ENC._27_Serie_Comprobante, rowCFDI_ENC._1_Folio, varCheque, rowCFDI_ENC._43_RFC_Receptor)
                 End If
-            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "GTC980421R4A" Then
+            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "GTC980421R4A" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DIM061230LN8" Then
                 Dim valor As Boolean = Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).Value
                 If Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).Value = True Then
                     varFechaDePago = dgvComplementos.Item("FechaPagoDataGridViewTextBoxColumn", i).Value

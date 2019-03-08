@@ -29,6 +29,8 @@ Partial Public Class ATEBCOFIDIRECDataSet
     
     Private tableEmpresa As EmpresaDataTable
     
+    Private tablevw_GPO_FINAGIL As vw_GPO_FINAGILDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -64,6 +66,9 @@ Partial Public Class ATEBCOFIDIRECDataSet
             If (Not (ds.Tables("Empresa")) Is Nothing) Then
                 MyBase.Tables.Add(New EmpresaDataTable(ds.Tables("Empresa")))
             End If
+            If (Not (ds.Tables("vw_GPO_FINAGIL")) Is Nothing) Then
+                MyBase.Tables.Add(New vw_GPO_FINAGILDataTable(ds.Tables("vw_GPO_FINAGIL")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -98,6 +103,16 @@ Partial Public Class ATEBCOFIDIRECDataSet
     Public ReadOnly Property Empresa() As EmpresaDataTable
         Get
             Return Me.tableEmpresa
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property vw_GPO_FINAGIL() As vw_GPO_FINAGILDataTable
+        Get
+            Return Me.tablevw_GPO_FINAGIL
         End Get
     End Property
     
@@ -174,6 +189,9 @@ Partial Public Class ATEBCOFIDIRECDataSet
             If (Not (ds.Tables("Empresa")) Is Nothing) Then
                 MyBase.Tables.Add(New EmpresaDataTable(ds.Tables("Empresa")))
             End If
+            If (Not (ds.Tables("vw_GPO_FINAGIL")) Is Nothing) Then
+                MyBase.Tables.Add(New vw_GPO_FINAGILDataTable(ds.Tables("vw_GPO_FINAGIL")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -218,6 +236,12 @@ Partial Public Class ATEBCOFIDIRECDataSet
                 Me.tableEmpresa.InitVars
             End If
         End If
+        Me.tablevw_GPO_FINAGIL = CType(MyBase.Tables("vw_GPO_FINAGIL"),vw_GPO_FINAGILDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tablevw_GPO_FINAGIL) Is Nothing) Then
+                Me.tablevw_GPO_FINAGIL.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -232,6 +256,8 @@ Partial Public Class ATEBCOFIDIRECDataSet
         MyBase.Tables.Add(Me.tableCFDProveedor)
         Me.tableEmpresa = New EmpresaDataTable()
         MyBase.Tables.Add(Me.tableEmpresa)
+        Me.tablevw_GPO_FINAGIL = New vw_GPO_FINAGILDataTable()
+        MyBase.Tables.Add(Me.tablevw_GPO_FINAGIL)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -243,6 +269,12 @@ Partial Public Class ATEBCOFIDIRECDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializeEmpresa() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Private Function ShouldSerializevw_GPO_FINAGIL() As Boolean
         Return false
     End Function
     
@@ -309,6 +341,9 @@ Partial Public Class ATEBCOFIDIRECDataSet
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub EmpresaRowChangeEventHandler(ByVal sender As Object, ByVal e As EmpresaRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Delegate Sub vw_GPO_FINAGILRowChangeEventHandler(ByVal sender As Object, ByVal e As vw_GPO_FINAGILRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -1954,6 +1989,789 @@ Partial Public Class ATEBCOFIDIRECDataSet
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "EmpresaDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class vw_GPO_FINAGILDataTable
+        Inherits Global.System.Data.TypedTableBase(Of vw_GPO_FINAGILRow)
+        
+        Private columnID As Global.System.Data.DataColumn
+        
+        Private columnEmpresa As Global.System.Data.DataColumn
+        
+        Private columnRFC As Global.System.Data.DataColumn
+        
+        Private columnSerie As Global.System.Data.DataColumn
+        
+        Private columnFolioFiscal As Global.System.Data.DataColumn
+        
+        Private columnProveedor As Global.System.Data.DataColumn
+        
+        Private columnTipoDocumento As Global.System.Data.DataColumn
+        
+        Private columnNoAprobacion As Global.System.Data.DataColumn
+        
+        Private columnAñoAprobacion As Global.System.Data.DataColumn
+        
+        Private columnRazonSocial As Global.System.Data.DataColumn
+        
+        Private columnMonto As Global.System.Data.DataColumn
+        
+        Private columnFechaEmision As Global.System.Data.DataColumn
+        
+        Private columnFechaRecepcion As Global.System.Data.DataColumn
+        
+        Private columnCFDStatus As Global.System.Data.DataColumn
+        
+        Private columnFacturaElectronica As Global.System.Data.DataColumn
+        
+        Private columnAddenda As Global.System.Data.DataColumn
+        
+        Private columnCFDOriginal As Global.System.Data.DataColumn
+        
+        Private columnAutoriza1 As Global.System.Data.DataColumn
+        
+        Private columnAutoriza2 As Global.System.Data.DataColumn
+        
+        Private columnUsuario As Global.System.Data.DataColumn
+        
+        Private columnLogin As Global.System.Data.DataColumn
+        
+        Private columnTipoDocumentoRec As Global.System.Data.DataColumn
+        
+        Private columnXMLSAT As Global.System.Data.DataColumn
+        
+        Private columnReferencia As Global.System.Data.DataColumn
+        
+        Private columnReferencia1 As Global.System.Data.DataColumn
+        
+        Private columnReferencia2 As Global.System.Data.DataColumn
+        
+        Private columnAnexo As Global.System.Data.DataColumn
+        
+        Private columnUUID As Global.System.Data.DataColumn
+        
+        Private columnExportado As Global.System.Data.DataColumn
+        
+        Private columnTrackID As Global.System.Data.DataColumn
+        
+        Private columnMoneda As Global.System.Data.DataColumn
+        
+        Private columnReferencia3 As Global.System.Data.DataColumn
+        
+        Private columnVersionCFD As Global.System.Data.DataColumn
+        
+        Private columnmailbox As Global.System.Data.DataColumn
+        
+        Private columnSubTotal As Global.System.Data.DataColumn
+        
+        Private columnRFC_Receptor As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "vw_GPO_FINAGIL"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property EmpresaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEmpresa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RFCColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRFC
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SerieColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSerie
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FolioFiscalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFolioFiscal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ProveedorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnProveedor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoDocumentoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoDocumento
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NoAprobacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNoAprobacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AñoAprobacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAñoAprobacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RazonSocialColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRazonSocial
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property MontoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMonto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaEmisionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaEmision
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechaRecepcionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechaRecepcion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CFDStatusColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCFDStatus
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FacturaElectronicaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFacturaElectronica
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AddendaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAddenda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property CFDOriginalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCFDOriginal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Autoriza1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAutoriza1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Autoriza2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAutoriza2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property UsuarioColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUsuario
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property LoginColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLogin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoDocumentoRecColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipoDocumentoRec
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property XMLSATColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnXMLSAT
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ReferenciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReferencia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Referencia1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReferencia1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Referencia2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReferencia2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property AnexoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAnexo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property UUIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUUID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ExportadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnExportado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TrackIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTrackID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property MonedaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMoneda
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Referencia3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnReferencia3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property VersionCFDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVersionCFD
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property mailboxColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmailbox
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property SubTotalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSubTotal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RFC_ReceptorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRFC_Receptor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As vw_GPO_FINAGILRow
+            Get
+                Return CType(Me.Rows(index),vw_GPO_FINAGILRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event vw_GPO_FINAGILRowChanging As vw_GPO_FINAGILRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event vw_GPO_FINAGILRowChanged As vw_GPO_FINAGILRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event vw_GPO_FINAGILRowDeleting As vw_GPO_FINAGILRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event vw_GPO_FINAGILRowDeleted As vw_GPO_FINAGILRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Sub Addvw_GPO_FINAGILRow(ByVal row As vw_GPO_FINAGILRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Function Addvw_GPO_FINAGILRow( _
+                    ByVal ID As Long,  _
+                    ByVal Empresa As String,  _
+                    ByVal RFC As String,  _
+                    ByVal Serie As String,  _
+                    ByVal FolioFiscal As String,  _
+                    ByVal Proveedor As String,  _
+                    ByVal TipoDocumento As String,  _
+                    ByVal NoAprobacion As String,  _
+                    ByVal AñoAprobacion As String,  _
+                    ByVal RazonSocial As String,  _
+                    ByVal Monto As Decimal,  _
+                    ByVal FechaEmision As Date,  _
+                    ByVal FechaRecepcion As Date,  _
+                    ByVal CFDStatus As String,  _
+                    ByVal FacturaElectronica As String,  _
+                    ByVal Addenda As String,  _
+                    ByVal CFDOriginal As String,  _
+                    ByVal Autoriza1 As String,  _
+                    ByVal Autoriza2 As String,  _
+                    ByVal Usuario As String,  _
+                    ByVal Login As String,  _
+                    ByVal TipoDocumentoRec As String,  _
+                    ByVal XMLSAT As String,  _
+                    ByVal Referencia As String,  _
+                    ByVal Referencia1 As String,  _
+                    ByVal Referencia2 As String,  _
+                    ByVal Anexo As String,  _
+                    ByVal UUID As String,  _
+                    ByVal Exportado As Boolean,  _
+                    ByVal TrackID As Long,  _
+                    ByVal Moneda As String,  _
+                    ByVal Referencia3 As String,  _
+                    ByVal VersionCFD As String,  _
+                    ByVal mailbox As String,  _
+                    ByVal SubTotal As Decimal,  _
+                    ByVal RFC_Receptor As String) As vw_GPO_FINAGILRow
+            Dim rowvw_GPO_FINAGILRow As vw_GPO_FINAGILRow = CType(Me.NewRow,vw_GPO_FINAGILRow)
+            Dim columnValuesArray() As Object = New Object() {ID, Empresa, RFC, Serie, FolioFiscal, Proveedor, TipoDocumento, NoAprobacion, AñoAprobacion, RazonSocial, Monto, FechaEmision, FechaRecepcion, CFDStatus, FacturaElectronica, Addenda, CFDOriginal, Autoriza1, Autoriza2, Usuario, Login, TipoDocumentoRec, XMLSAT, Referencia, Referencia1, Referencia2, Anexo, UUID, Exportado, TrackID, Moneda, Referencia3, VersionCFD, mailbox, SubTotal, RFC_Receptor}
+            rowvw_GPO_FINAGILRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowvw_GPO_FINAGILRow)
+            Return rowvw_GPO_FINAGILRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByID(ByVal ID As Long) As vw_GPO_FINAGILRow
+            Return CType(Me.Rows.Find(New Object() {ID}),vw_GPO_FINAGILRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As vw_GPO_FINAGILDataTable = CType(MyBase.Clone,vw_GPO_FINAGILDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New vw_GPO_FINAGILDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnID = MyBase.Columns("ID")
+            Me.columnEmpresa = MyBase.Columns("Empresa")
+            Me.columnRFC = MyBase.Columns("RFC")
+            Me.columnSerie = MyBase.Columns("Serie")
+            Me.columnFolioFiscal = MyBase.Columns("FolioFiscal")
+            Me.columnProveedor = MyBase.Columns("Proveedor")
+            Me.columnTipoDocumento = MyBase.Columns("TipoDocumento")
+            Me.columnNoAprobacion = MyBase.Columns("NoAprobacion")
+            Me.columnAñoAprobacion = MyBase.Columns("AñoAprobacion")
+            Me.columnRazonSocial = MyBase.Columns("RazonSocial")
+            Me.columnMonto = MyBase.Columns("Monto")
+            Me.columnFechaEmision = MyBase.Columns("FechaEmision")
+            Me.columnFechaRecepcion = MyBase.Columns("FechaRecepcion")
+            Me.columnCFDStatus = MyBase.Columns("CFDStatus")
+            Me.columnFacturaElectronica = MyBase.Columns("FacturaElectronica")
+            Me.columnAddenda = MyBase.Columns("Addenda")
+            Me.columnCFDOriginal = MyBase.Columns("CFDOriginal")
+            Me.columnAutoriza1 = MyBase.Columns("Autoriza1")
+            Me.columnAutoriza2 = MyBase.Columns("Autoriza2")
+            Me.columnUsuario = MyBase.Columns("Usuario")
+            Me.columnLogin = MyBase.Columns("Login")
+            Me.columnTipoDocumentoRec = MyBase.Columns("TipoDocumentoRec")
+            Me.columnXMLSAT = MyBase.Columns("XMLSAT")
+            Me.columnReferencia = MyBase.Columns("Referencia")
+            Me.columnReferencia1 = MyBase.Columns("Referencia1")
+            Me.columnReferencia2 = MyBase.Columns("Referencia2")
+            Me.columnAnexo = MyBase.Columns("Anexo")
+            Me.columnUUID = MyBase.Columns("UUID")
+            Me.columnExportado = MyBase.Columns("Exportado")
+            Me.columnTrackID = MyBase.Columns("TrackID")
+            Me.columnMoneda = MyBase.Columns("Moneda")
+            Me.columnReferencia3 = MyBase.Columns("Referencia3")
+            Me.columnVersionCFD = MyBase.Columns("VersionCFD")
+            Me.columnmailbox = MyBase.Columns("mailbox")
+            Me.columnSubTotal = MyBase.Columns("SubTotal")
+            Me.columnRFC_Receptor = MyBase.Columns("RFC_Receptor")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID)
+            Me.columnEmpresa = New Global.System.Data.DataColumn("Empresa", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEmpresa)
+            Me.columnRFC = New Global.System.Data.DataColumn("RFC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRFC)
+            Me.columnSerie = New Global.System.Data.DataColumn("Serie", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSerie)
+            Me.columnFolioFiscal = New Global.System.Data.DataColumn("FolioFiscal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFolioFiscal)
+            Me.columnProveedor = New Global.System.Data.DataColumn("Proveedor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProveedor)
+            Me.columnTipoDocumento = New Global.System.Data.DataColumn("TipoDocumento", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoDocumento)
+            Me.columnNoAprobacion = New Global.System.Data.DataColumn("NoAprobacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNoAprobacion)
+            Me.columnAñoAprobacion = New Global.System.Data.DataColumn("AñoAprobacion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAñoAprobacion)
+            Me.columnRazonSocial = New Global.System.Data.DataColumn("RazonSocial", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRazonSocial)
+            Me.columnMonto = New Global.System.Data.DataColumn("Monto", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMonto)
+            Me.columnFechaEmision = New Global.System.Data.DataColumn("FechaEmision", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaEmision)
+            Me.columnFechaRecepcion = New Global.System.Data.DataColumn("FechaRecepcion", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechaRecepcion)
+            Me.columnCFDStatus = New Global.System.Data.DataColumn("CFDStatus", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCFDStatus)
+            Me.columnFacturaElectronica = New Global.System.Data.DataColumn("FacturaElectronica", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFacturaElectronica)
+            Me.columnAddenda = New Global.System.Data.DataColumn("Addenda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAddenda)
+            Me.columnCFDOriginal = New Global.System.Data.DataColumn("CFDOriginal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCFDOriginal)
+            Me.columnAutoriza1 = New Global.System.Data.DataColumn("Autoriza1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAutoriza1)
+            Me.columnAutoriza2 = New Global.System.Data.DataColumn("Autoriza2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAutoriza2)
+            Me.columnUsuario = New Global.System.Data.DataColumn("Usuario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUsuario)
+            Me.columnLogin = New Global.System.Data.DataColumn("Login", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLogin)
+            Me.columnTipoDocumentoRec = New Global.System.Data.DataColumn("TipoDocumentoRec", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipoDocumentoRec)
+            Me.columnXMLSAT = New Global.System.Data.DataColumn("XMLSAT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnXMLSAT)
+            Me.columnReferencia = New Global.System.Data.DataColumn("Referencia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReferencia)
+            Me.columnReferencia1 = New Global.System.Data.DataColumn("Referencia1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReferencia1)
+            Me.columnReferencia2 = New Global.System.Data.DataColumn("Referencia2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReferencia2)
+            Me.columnAnexo = New Global.System.Data.DataColumn("Anexo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAnexo)
+            Me.columnUUID = New Global.System.Data.DataColumn("UUID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUUID)
+            Me.columnExportado = New Global.System.Data.DataColumn("Exportado", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnExportado)
+            Me.columnTrackID = New Global.System.Data.DataColumn("TrackID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTrackID)
+            Me.columnMoneda = New Global.System.Data.DataColumn("Moneda", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMoneda)
+            Me.columnReferencia3 = New Global.System.Data.DataColumn("Referencia3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReferencia3)
+            Me.columnVersionCFD = New Global.System.Data.DataColumn("VersionCFD", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVersionCFD)
+            Me.columnmailbox = New Global.System.Data.DataColumn("mailbox", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmailbox)
+            Me.columnSubTotal = New Global.System.Data.DataColumn("SubTotal", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSubTotal)
+            Me.columnRFC_Receptor = New Global.System.Data.DataColumn("RFC_Receptor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRFC_Receptor)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
+            Me.columnID.AllowDBNull = false
+            Me.columnID.Unique = true
+            Me.columnEmpresa.AllowDBNull = false
+            Me.columnEmpresa.MaxLength = 10
+            Me.columnRFC.MaxLength = 15
+            Me.columnSerie.MaxLength = 30
+            Me.columnFolioFiscal.AllowDBNull = false
+            Me.columnFolioFiscal.MaxLength = 40
+            Me.columnProveedor.MaxLength = 20
+            Me.columnTipoDocumento.MaxLength = 10
+            Me.columnNoAprobacion.MaxLength = 14
+            Me.columnAñoAprobacion.MaxLength = 4
+            Me.columnRazonSocial.MaxLength = 150
+            Me.columnCFDStatus.MaxLength = 2
+            Me.columnFacturaElectronica.MaxLength = 2147483647
+            Me.columnAddenda.MaxLength = 2147483647
+            Me.columnCFDOriginal.MaxLength = 2147483647
+            Me.columnAutoriza1.MaxLength = 50
+            Me.columnAutoriza2.MaxLength = 50
+            Me.columnUsuario.MaxLength = 20
+            Me.columnLogin.MaxLength = 50
+            Me.columnTipoDocumentoRec.MaxLength = 3
+            Me.columnXMLSAT.MaxLength = 2147483647
+            Me.columnReferencia.MaxLength = 2147483647
+            Me.columnReferencia1.MaxLength = 2147483647
+            Me.columnReferencia2.MaxLength = 2147483647
+            Me.columnAnexo.MaxLength = 2147483647
+            Me.columnUUID.MaxLength = 36
+            Me.columnMoneda.MaxLength = 4
+            Me.columnReferencia3.MaxLength = 50
+            Me.columnVersionCFD.MaxLength = 5
+            Me.columnmailbox.MaxLength = 2
+            Me.columnRFC_Receptor.MaxLength = 15
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Newvw_GPO_FINAGILRow() As vw_GPO_FINAGILRow
+            Return CType(Me.NewRow,vw_GPO_FINAGILRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New vw_GPO_FINAGILRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(vw_GPO_FINAGILRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.vw_GPO_FINAGILRowChangedEvent) Is Nothing) Then
+                RaiseEvent vw_GPO_FINAGILRowChanged(Me, New vw_GPO_FINAGILRowChangeEvent(CType(e.Row,vw_GPO_FINAGILRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.vw_GPO_FINAGILRowChangingEvent) Is Nothing) Then
+                RaiseEvent vw_GPO_FINAGILRowChanging(Me, New vw_GPO_FINAGILRowChangeEvent(CType(e.Row,vw_GPO_FINAGILRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.vw_GPO_FINAGILRowDeletedEvent) Is Nothing) Then
+                RaiseEvent vw_GPO_FINAGILRowDeleted(Me, New vw_GPO_FINAGILRowChangeEvent(CType(e.Row,vw_GPO_FINAGILRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.vw_GPO_FINAGILRowDeletingEvent) Is Nothing) Then
+                RaiseEvent vw_GPO_FINAGILRowDeleting(Me, New vw_GPO_FINAGILRowChangeEvent(CType(e.Row,vw_GPO_FINAGILRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Removevw_GPO_FINAGILRow(ByVal row As vw_GPO_FINAGILRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As ATEBCOFIDIRECDataSet = New ATEBCOFIDIRECDataSet()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "vw_GPO_FINAGILDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -4123,6 +4941,948 @@ Partial Public Class ATEBCOFIDIRECDataSet
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class vw_GPO_FINAGILRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tablevw_GPO_FINAGIL As vw_GPO_FINAGILDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tablevw_GPO_FINAGIL = CType(Me.Table,vw_GPO_FINAGILDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ID() As Long
+            Get
+                Return CType(Me(Me.tablevw_GPO_FINAGIL.IDColumn),Long)
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Empresa() As String
+            Get
+                Return CType(Me(Me.tablevw_GPO_FINAGIL.EmpresaColumn),String)
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.EmpresaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RFC() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.RFCColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'RFC' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.RFCColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Serie() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.SerieColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Serie' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.SerieColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FolioFiscal() As String
+            Get
+                Return CType(Me(Me.tablevw_GPO_FINAGIL.FolioFiscalColumn),String)
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.FolioFiscalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Proveedor() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.ProveedorColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Proveedor' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.ProveedorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoDocumento() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.TipoDocumentoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoDocumento' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.TipoDocumentoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property NoAprobacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.NoAprobacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NoAprobacion' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.NoAprobacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property AñoAprobacion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.AñoAprobacionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'AñoAprobacion' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.AñoAprobacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RazonSocial() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.RazonSocialColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'RazonSocial' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.RazonSocialColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Monto() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.MontoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Monto' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.MontoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaEmision() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.FechaEmisionColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaEmision' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.FechaEmisionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechaRecepcion() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.FechaRecepcionColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechaRecepcion' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.FechaRecepcionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CFDStatus() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.CFDStatusColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CFDStatus' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.CFDStatusColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FacturaElectronica() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.FacturaElectronicaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FacturaElectronica' de la tabla 'vw_GPO_FINAGIL' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.FacturaElectronicaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Addenda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.AddendaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Addenda' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.AddendaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CFDOriginal() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.CFDOriginalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CFDOriginal' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.CFDOriginalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Autoriza1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.Autoriza1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Autoriza1' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.Autoriza1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Autoriza2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.Autoriza2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Autoriza2' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.Autoriza2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Usuario() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.UsuarioColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Usuario' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.UsuarioColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Login() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.LoginColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Login' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.LoginColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TipoDocumentoRec() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.TipoDocumentoRecColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TipoDocumentoRec' de la tabla 'vw_GPO_FINAGIL' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.TipoDocumentoRecColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property XMLSAT() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.XMLSATColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'XMLSAT' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.XMLSATColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Referencia() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.ReferenciaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Referencia' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.ReferenciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Referencia1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.Referencia1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Referencia1' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.Referencia1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Referencia2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.Referencia2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Referencia2' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.Referencia2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Anexo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.AnexoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Anexo' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.AnexoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property UUID() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.UUIDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'UUID' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.UUIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Exportado() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.ExportadoColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Exportado' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.ExportadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property TrackID() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.TrackIDColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TrackID' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.TrackIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Moneda() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.MonedaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Moneda' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.MonedaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Referencia3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.Referencia3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Referencia3' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.Referencia3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property VersionCFD() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.VersionCFDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'VersionCFD' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.VersionCFDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property mailbox() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.mailboxColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'mailbox' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.mailboxColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property SubTotal() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.SubTotalColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SubTotal' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.SubTotalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RFC_Receptor() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_GPO_FINAGIL.RFC_ReceptorColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'RFC_Receptor' de la tabla 'vw_GPO_FINAGIL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_GPO_FINAGIL.RFC_ReceptorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsRFCNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.RFCColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetRFCNull()
+            Me(Me.tablevw_GPO_FINAGIL.RFCColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSerieNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.SerieColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSerieNull()
+            Me(Me.tablevw_GPO_FINAGIL.SerieColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsProveedorNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.ProveedorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetProveedorNull()
+            Me(Me.tablevw_GPO_FINAGIL.ProveedorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoDocumentoNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.TipoDocumentoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoDocumentoNull()
+            Me(Me.tablevw_GPO_FINAGIL.TipoDocumentoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsNoAprobacionNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.NoAprobacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetNoAprobacionNull()
+            Me(Me.tablevw_GPO_FINAGIL.NoAprobacionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAñoAprobacionNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.AñoAprobacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAñoAprobacionNull()
+            Me(Me.tablevw_GPO_FINAGIL.AñoAprobacionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsRazonSocialNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.RazonSocialColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetRazonSocialNull()
+            Me(Me.tablevw_GPO_FINAGIL.RazonSocialColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsMontoNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.MontoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetMontoNull()
+            Me(Me.tablevw_GPO_FINAGIL.MontoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaEmisionNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.FechaEmisionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaEmisionNull()
+            Me(Me.tablevw_GPO_FINAGIL.FechaEmisionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechaRecepcionNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.FechaRecepcionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechaRecepcionNull()
+            Me(Me.tablevw_GPO_FINAGIL.FechaRecepcionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCFDStatusNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.CFDStatusColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCFDStatusNull()
+            Me(Me.tablevw_GPO_FINAGIL.CFDStatusColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFacturaElectronicaNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.FacturaElectronicaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFacturaElectronicaNull()
+            Me(Me.tablevw_GPO_FINAGIL.FacturaElectronicaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAddendaNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.AddendaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAddendaNull()
+            Me(Me.tablevw_GPO_FINAGIL.AddendaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsCFDOriginalNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.CFDOriginalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetCFDOriginalNull()
+            Me(Me.tablevw_GPO_FINAGIL.CFDOriginalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAutoriza1Null() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.Autoriza1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAutoriza1Null()
+            Me(Me.tablevw_GPO_FINAGIL.Autoriza1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAutoriza2Null() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.Autoriza2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAutoriza2Null()
+            Me(Me.tablevw_GPO_FINAGIL.Autoriza2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsUsuarioNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.UsuarioColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetUsuarioNull()
+            Me(Me.tablevw_GPO_FINAGIL.UsuarioColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsLoginNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.LoginColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetLoginNull()
+            Me(Me.tablevw_GPO_FINAGIL.LoginColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoDocumentoRecNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.TipoDocumentoRecColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoDocumentoRecNull()
+            Me(Me.tablevw_GPO_FINAGIL.TipoDocumentoRecColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsXMLSATNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.XMLSATColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetXMLSATNull()
+            Me(Me.tablevw_GPO_FINAGIL.XMLSATColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsReferenciaNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.ReferenciaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetReferenciaNull()
+            Me(Me.tablevw_GPO_FINAGIL.ReferenciaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsReferencia1Null() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.Referencia1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetReferencia1Null()
+            Me(Me.tablevw_GPO_FINAGIL.Referencia1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsReferencia2Null() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.Referencia2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetReferencia2Null()
+            Me(Me.tablevw_GPO_FINAGIL.Referencia2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsAnexoNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.AnexoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetAnexoNull()
+            Me(Me.tablevw_GPO_FINAGIL.AnexoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsUUIDNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.UUIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetUUIDNull()
+            Me(Me.tablevw_GPO_FINAGIL.UUIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsExportadoNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.ExportadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetExportadoNull()
+            Me(Me.tablevw_GPO_FINAGIL.ExportadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTrackIDNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.TrackIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTrackIDNull()
+            Me(Me.tablevw_GPO_FINAGIL.TrackIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsMonedaNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.MonedaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetMonedaNull()
+            Me(Me.tablevw_GPO_FINAGIL.MonedaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsReferencia3Null() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.Referencia3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetReferencia3Null()
+            Me(Me.tablevw_GPO_FINAGIL.Referencia3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsVersionCFDNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.VersionCFDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetVersionCFDNull()
+            Me(Me.tablevw_GPO_FINAGIL.VersionCFDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsmailboxNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.mailboxColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetmailboxNull()
+            Me(Me.tablevw_GPO_FINAGIL.mailboxColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsSubTotalNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.SubTotalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetSubTotalNull()
+            Me(Me.tablevw_GPO_FINAGIL.SubTotalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsRFC_ReceptorNull() As Boolean
+            Return Me.IsNull(Me.tablevw_GPO_FINAGIL.RFC_ReceptorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetRFC_ReceptorNull()
+            Me(Me.tablevw_GPO_FINAGIL.RFC_ReceptorColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -4180,6 +5940,42 @@ Partial Public Class ATEBCOFIDIRECDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property Row() As EmpresaRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Class vw_GPO_FINAGILRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As vw_GPO_FINAGILRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New(ByVal row As vw_GPO_FINAGILRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Row() As vw_GPO_FINAGILRow
             Get
                 Return Me.eventRow
             End Get
@@ -7759,6 +9555,242 @@ Namespace ATEBCOFIDIRECDataSetTableAdapters
             Else
                 Return CType(returnValue,String)
             End If
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class vw_GPO_FINAGILTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "vw_GPO_FINAGIL"
+            tableMapping.ColumnMappings.Add("ID", "ID")
+            tableMapping.ColumnMappings.Add("Empresa", "Empresa")
+            tableMapping.ColumnMappings.Add("RFC", "RFC")
+            tableMapping.ColumnMappings.Add("Serie", "Serie")
+            tableMapping.ColumnMappings.Add("FolioFiscal", "FolioFiscal")
+            tableMapping.ColumnMappings.Add("Proveedor", "Proveedor")
+            tableMapping.ColumnMappings.Add("TipoDocumento", "TipoDocumento")
+            tableMapping.ColumnMappings.Add("NoAprobacion", "NoAprobacion")
+            tableMapping.ColumnMappings.Add("AñoAprobacion", "AñoAprobacion")
+            tableMapping.ColumnMappings.Add("RazonSocial", "RazonSocial")
+            tableMapping.ColumnMappings.Add("Monto", "Monto")
+            tableMapping.ColumnMappings.Add("FechaEmision", "FechaEmision")
+            tableMapping.ColumnMappings.Add("FechaRecepcion", "FechaRecepcion")
+            tableMapping.ColumnMappings.Add("CFDStatus", "CFDStatus")
+            tableMapping.ColumnMappings.Add("FacturaElectronica", "FacturaElectronica")
+            tableMapping.ColumnMappings.Add("Addenda", "Addenda")
+            tableMapping.ColumnMappings.Add("CFDOriginal", "CFDOriginal")
+            tableMapping.ColumnMappings.Add("Autoriza1", "Autoriza1")
+            tableMapping.ColumnMappings.Add("Autoriza2", "Autoriza2")
+            tableMapping.ColumnMappings.Add("Usuario", "Usuario")
+            tableMapping.ColumnMappings.Add("Login", "Login")
+            tableMapping.ColumnMappings.Add("TipoDocumentoRec", "TipoDocumentoRec")
+            tableMapping.ColumnMappings.Add("XMLSAT", "XMLSAT")
+            tableMapping.ColumnMappings.Add("Referencia", "Referencia")
+            tableMapping.ColumnMappings.Add("Referencia1", "Referencia1")
+            tableMapping.ColumnMappings.Add("Referencia2", "Referencia2")
+            tableMapping.ColumnMappings.Add("Anexo", "Anexo")
+            tableMapping.ColumnMappings.Add("UUID", "UUID")
+            tableMapping.ColumnMappings.Add("Exportado", "Exportado")
+            tableMapping.ColumnMappings.Add("TrackID", "TrackID")
+            tableMapping.ColumnMappings.Add("Moneda", "Moneda")
+            tableMapping.ColumnMappings.Add("Referencia3", "Referencia3")
+            tableMapping.ColumnMappings.Add("VersionCFD", "VersionCFD")
+            tableMapping.ColumnMappings.Add("mailbox", "mailbox")
+            tableMapping.ColumnMappings.Add("SubTotal", "SubTotal")
+            tableMapping.ColumnMappings.Add("RFC_Receptor", "RFC_Receptor")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.CompPagosFilialesV.My.MySettings.Default.ATEBCOFIDIRECConnectionString1
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        ID, Empresa, RFC, Serie, FolioFiscal, Proveedor, TipoDocumento, NoA"& _ 
+                "probacion, AñoAprobacion, RazonSocial, Monto, FechaEmision, FechaRecepcion, CFDS"& _ 
+                "tatus, FacturaElectronica, Addenda, CFDOriginal, Autoriza1, Autoriza2,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
+                "                  Usuario, Login, TipoDocumentoRec, XMLSAT, Referencia, Referenc"& _ 
+                "ia1, Referencia2, Anexo, UUID, Exportado, TrackID, Moneda, Referencia3, VersionC"& _ 
+                "FD, mailbox, SubTotal, RFC_Receptor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_GPO_FINAGIL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE      "& _ 
+                "  (UUID LIKE '%' + @FolFisc + '%') AND (RFC_Receptor = @RFC)"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FolFisc", Global.System.Data.SqlDbType.VarChar, 36, Global.System.Data.ParameterDirection.Input, 0, 0, "UUID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RFC", Global.System.Data.SqlDbType.VarChar, 15, Global.System.Data.ParameterDirection.Input, 0, 0, "RFC_Receptor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As ATEBCOFIDIRECDataSet.vw_GPO_FINAGILDataTable, ByVal FolFisc As String, ByVal RFC As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (FolFisc Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(FolFisc,String)
+            End If
+            If (RFC Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(RFC,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData(ByVal FolFisc As String, ByVal RFC As String) As ATEBCOFIDIRECDataSet.vw_GPO_FINAGILDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (FolFisc Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(FolFisc,String)
+            End If
+            If (RFC Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(RFC,String)
+            End If
+            Dim dataTable As ATEBCOFIDIRECDataSet.vw_GPO_FINAGILDataTable = New ATEBCOFIDIRECDataSet.vw_GPO_FINAGILDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
         End Function
     End Class
     

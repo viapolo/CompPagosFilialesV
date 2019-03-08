@@ -23,79 +23,43 @@ Partial Class frmUUIDRelC
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.ATEBCOFIDIRECDataSet = New CompPagosFilialesV.ATEBCOFIDIRECDataSet()
-        Me.CFDProveedorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CFDProveedorTableAdapter = New CompPagosFilialesV.ATEBCOFIDIRECDataSetTableAdapters.CFDProveedorTableAdapter()
-        Me.TableAdapterManager = New CompPagosFilialesV.ATEBCOFIDIRECDataSetTableAdapters.TableAdapterManager()
         Me.CFDProveedorDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgMPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgMoneda = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgTC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgMonto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.XMLSAT = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.XMLSAT = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnAceptar = New System.Windows.Forms.Button()
-        CType(Me.ATEBCOFIDIRECDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CFDProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.CFDProveedorBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ATEBCOFIDIRECDataSet = New CompPagosFilialesV.ATEBCOFIDIRECDataSet()
+        Me.CFDProveedorTableAdapter = New CompPagosFilialesV.ATEBCOFIDIRECDataSetTableAdapters.CFDProveedorTableAdapter()
+        Me.TableAdapterManager = New CompPagosFilialesV.ATEBCOFIDIRECDataSetTableAdapters.TableAdapterManager()
+        Me.Vw_GPO_FINAGILTableAdapter = New CompPagosFilialesV.ATEBCOFIDIRECDataSetTableAdapters.vw_GPO_FINAGILTableAdapter()
+        Me.VwGPOFINAGILBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.CFDProveedorDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CFDProveedorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ATEBCOFIDIRECDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwGPOFINAGILBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'ATEBCOFIDIRECDataSet
-        '
-        Me.ATEBCOFIDIRECDataSet.DataSetName = "ATEBCOFIDIRECDataSet"
-        Me.ATEBCOFIDIRECDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CFDProveedorBindingSource
-        '
-        Me.CFDProveedorBindingSource.DataMember = "CFDProveedor"
-        Me.CFDProveedorBindingSource.DataSource = Me.ATEBCOFIDIRECDataSet
-        '
-        'CFDProveedorTableAdapter
-        '
-        Me.CFDProveedorTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CFDProveedorTableAdapter = Me.CFDProveedorTableAdapter
-        Me.TableAdapterManager.EmpresaTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = CompPagosFilialesV.ATEBCOFIDIRECDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'CFDProveedorDataGridView
         '
         Me.CFDProveedorDataGridView.AutoGenerateColumns = False
         Me.CFDProveedorDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.CFDProveedorDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.dgMPago, Me.dgMoneda, Me.dgTC, Me.dgMonto, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn28, Me.XMLSAT})
-        Me.CFDProveedorDataGridView.DataSource = Me.CFDProveedorBindingSource
+        Me.CFDProveedorDataGridView.DataSource = Me.VwGPOFINAGILBindingSource
         Me.CFDProveedorDataGridView.Dock = System.Windows.Forms.DockStyle.Top
         Me.CFDProveedorDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.CFDProveedorDataGridView.Name = "CFDProveedorDataGridView"
         Me.CFDProveedorDataGridView.Size = New System.Drawing.Size(799, 274)
         Me.CFDProveedorDataGridView.TabIndex = 1
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "RFC"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "RFC"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Serie"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Serie"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "FolioFiscal"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "FolioFiscal"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         '
         'dgMPago
         '
@@ -116,6 +80,39 @@ Partial Class frmUUIDRelC
         '
         Me.dgMonto.HeaderText = "MontoDR"
         Me.dgMonto.Name = "dgMonto"
+        '
+        'XMLSAT
+        '
+        Me.XMLSAT.DataPropertyName = "CFDOriginal"
+        Me.XMLSAT.HeaderText = "XMLSAT"
+        Me.XMLSAT.Name = "XMLSAT"
+        '
+        'btnAceptar
+        '
+        Me.btnAceptar.Location = New System.Drawing.Point(712, 290)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAceptar.TabIndex = 2
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.UseVisualStyleBackColor = True
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "RFC"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "RFC"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Serie"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Serie"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "FolioFiscal"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "FolioFiscal"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         '
         'DataGridViewTextBoxColumn10
         '
@@ -141,20 +138,35 @@ Partial Class frmUUIDRelC
         Me.DataGridViewTextBoxColumn28.HeaderText = "UUID"
         Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
         '
-        'XMLSAT
+        'CFDProveedorBindingSource
         '
-        Me.XMLSAT.DataPropertyName = "CFDOriginal"
-        Me.XMLSAT.HeaderText = "XMLSAT"
-        Me.XMLSAT.Name = "XMLSAT"
+        Me.CFDProveedorBindingSource.DataMember = "vw_GPO_FINAGIL"
+        Me.CFDProveedorBindingSource.DataSource = Me.ATEBCOFIDIRECDataSet
         '
-        'btnAceptar
+        'ATEBCOFIDIRECDataSet
         '
-        Me.btnAceptar.Location = New System.Drawing.Point(712, 290)
-        Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAceptar.TabIndex = 2
-        Me.btnAceptar.Text = "Aceptar"
-        Me.btnAceptar.UseVisualStyleBackColor = True
+        Me.ATEBCOFIDIRECDataSet.DataSetName = "ATEBCOFIDIRECDataSet"
+        Me.ATEBCOFIDIRECDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CFDProveedorTableAdapter
+        '
+        Me.CFDProveedorTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDProveedorTableAdapter = Me.CFDProveedorTableAdapter
+        Me.TableAdapterManager.EmpresaTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = CompPagosFilialesV.ATEBCOFIDIRECDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'Vw_GPO_FINAGILTableAdapter
+        '
+        Me.Vw_GPO_FINAGILTableAdapter.ClearBeforeFill = True
+        '
+        'VwGPOFINAGILBindingSource
+        '
+        Me.VwGPOFINAGILBindingSource.DataMember = "vw_GPO_FINAGIL"
+        Me.VwGPOFINAGILBindingSource.DataSource = Me.ATEBCOFIDIRECDataSet
         '
         'frmUUIDRelC
         '
@@ -166,9 +178,10 @@ Partial Class frmUUIDRelC
         Me.Name = "frmUUIDRelC"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmUUIDRelC"
-        CType(Me.ATEBCOFIDIRECDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CFDProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CFDProveedorDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CFDProveedorBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ATEBCOFIDIRECDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwGPOFINAGILBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -191,4 +204,6 @@ Partial Class frmUUIDRelC
     Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
     Friend WithEvents XMLSAT As DataGridViewTextBoxColumn
     Friend WithEvents btnAceptar As Button
+    Friend WithEvents Vw_GPO_FINAGILTableAdapter As ATEBCOFIDIRECDataSetTableAdapters.vw_GPO_FINAGILTableAdapter
+    Friend WithEvents VwGPOFINAGILBindingSource As BindingSource
 End Class

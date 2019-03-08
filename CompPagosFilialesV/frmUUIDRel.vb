@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 Imports System.Xml
 Public Class frmUUIDRel
     Dim totalPago As Double = 0
-    Dim taCOFIDI As New ATEBCOFIDIRECDataSetTableAdapters.CFDProveedorTableAdapter
+    Dim taCOFIDI As New ATEBCOFIDIRECDataSetTableAdapters.vw_GPO_FINAGILTableAdapter
     Dim dsCOFIDI As New ATEBCOFIDIRECDataSet
 
     Dim taCFDI_ENC As New Production_AUXDataSetTableAdapters.CFDI_EncabezadoTableAdapter
@@ -43,16 +43,16 @@ Public Class frmUUIDRel
                 frmPrincipal.tspRegistrosPrincipal.Value = contador
                 Try
                     If row.Cells(3).Value.ToString.Length = 15 Then
-                        Me.taCOFIDI.FillBy(Me.dsCOFIDI.CFDProveedor, row.Cells(3).Value.Insert(8, "-").Insert(13, "-"), row.Cells(1).Value)
+                        Me.taCOFIDI.Fill(Me.dsCOFIDI.vw_GPO_FINAGIL, row.Cells(3).Value.Insert(8, "-").Insert(13, "-"), row.Cells(1).Value)
                     Else
-                        Me.taCOFIDI.FillBy(Me.dsCOFIDI.CFDProveedor, row.Cells(3).Value.ToString.Substring(0, 8), row.Cells(1).Value)
+                        Me.taCOFIDI.Fill(Me.dsCOFIDI.vw_GPO_FINAGIL, row.Cells(3).Value.ToString.Substring(0, 8), row.Cells(1).Value)
                     End If
                 Catch
 
                 End Try
-                Dim rowUUID As ATEBCOFIDIRECDataSet.CFDProveedorRow
-                If dsCOFIDI.CFDProveedor.Rows.Count = 1 Then
-                    For Each rowUUID In dsCOFIDI.CFDProveedor.Rows()
+                Dim rowUUID As ATEBCOFIDIRECDataSet.vw_GPO_FINAGILRow
+                If dsCOFIDI.vw_GPO_FINAGIL.Rows.Count = 1 Then
+                    For Each rowUUID In dsCOFIDI.vw_GPO_FINAGIL.Rows()
                         Me.dgvUUIDRelacionados.Item("dgUUID", row.Index).Value = rowUUID.UUID
                         Me.dgvUUIDRelacionados.Item("dgMPago", row.Index).Value = validaNull(leeXML(rowUUID.CFDOriginal, "MetodoPago"))
                         Me.dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value = validaNull(leeXML(rowUUID.CFDOriginal, "Moneda"))
@@ -79,11 +79,11 @@ Public Class frmUUIDRel
                         Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).ReadOnly = False
                         Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Red
                     End If
-                ElseIf dsCOFIDI.CFDProveedor.Rows.Count > 1 Then
+                ElseIf dsCOFIDI.vw_GPO_FINAGIL.Rows.Count > 1 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Pink
-                    Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value = "-- " + dsCOFIDI.CFDProveedor.Rows.Count.ToString + " --"
+                    Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value = "-- " + dsCOFIDI.vw_GPO_FINAGIL.Rows.Count.ToString + " --"
                     varBanderaUUID = True
-                ElseIf dsCOFIDI.CFDProveedor.Rows.Count = 0 Then
+                ElseIf dsCOFIDI.vw_GPO_FINAGIL.Rows.Count = 0 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Purple
                 End If
                 If Me.dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value = "MXN" Then
@@ -137,11 +137,11 @@ Public Class frmUUIDRel
                         Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).ReadOnly = False
                         Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Red
                     End If
-                ElseIf dsCOFIDI.CFDProveedor.Rows.Count > 1 Then
+                ElseIf dsCOFIDI.vw_GPO_FINAGIL.Rows.Count > 1 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Pink
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value = "-- " + dsWeb_Finagil.WEB_FacturasXML.Rows.Count.ToString + " --"
                     varBanderaUUID = True
-                ElseIf dsCOFIDI.CFDProveedor.Rows.Count = 0 Then
+                ElseIf dsCOFIDI.vw_GPO_FINAGIL.Rows.Count = 0 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Purple
                 End If
                 If Me.dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value = "MXN" Then
@@ -190,11 +190,11 @@ Public Class frmUUIDRel
                         Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).ReadOnly = False
                         Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Red
                     End If
-                ElseIf dsCOFIDI.CFDProveedor.Rows.Count > 1 Then
+                ElseIf dsCOFIDI.vw_GPO_FINAGIL.Rows.Count > 1 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Pink
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Value = "-- " + dsWeb_Finagil.WEB_FacturasXML.Rows.Count.ToString + " --"
                     varBanderaUUID = True
-                ElseIf dsCOFIDI.CFDProveedor.Rows.Count = 0 Then
+                ElseIf dsCOFIDI.vw_GPO_FINAGIL.Rows.Count = 0 Then
                     Me.dgvUUIDRelacionados.Item("dgMonto", row.Index).Style.BackColor = Color.Purple
                 End If
                 If Me.dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value = "MXN" Then
