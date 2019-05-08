@@ -45,7 +45,7 @@ Public Class frmUUIDRel
                     If row.Cells(3).Value.ToString.Length = 15 Then
                         Me.taCOFIDI.Fill(Me.dsCOFIDI.vw_GPO_FINAGIL, row.Cells(3).Value.Insert(8, "-").Insert(13, "-"), row.Cells(1).Value)
                     Else
-                        Me.taCOFIDI.Fill(Me.dsCOFIDI.vw_GPO_FINAGIL, row.Cells(3).Value.ToString.Substring(0, 8), row.Cells(1).Value)
+                        Me.taCOFIDI.Fill(Me.dsCOFIDI.vw_GPO_FINAGIL, row.Cells(3).Value.ToString.Substring(0, 6), row.Cells(1).Value)
                     End If
                 Catch
 

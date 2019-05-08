@@ -90,7 +90,7 @@ Public Class frmPrincipal
                     rowheader.Procesado = 0
 
                     rowheader.FechaPago = rows.Fecha
-                    rowheader.FormaDePagoP = rows.MetPago.Replace("Spei", "03")
+                    rowheader.FormaDePagoP = "03" 'rows.MetPago.Replace("Spei", "03")
                     rowheader.MonedaP = rows.Moneda.Replace("PESO", "MXN")
                     rowheader.Monto = rows.MontoCheque
                     rowheader.NumOperacion = rows.Cheque
@@ -314,15 +314,15 @@ Public Class frmPrincipal
 
                 'If Math.Round(importeXML, 2) = dgvComplementos.Item("MontoDataGridViewTextBoxColumn", i).Value Then
                 Me.dgvComplementos.Item("MontoDataGridViewTextBoxColumn", i).Style.BackColor = Color.Green
-                    Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).ReadOnly = False
-                    verdes += 1
+                Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).ReadOnly = False
+                verdes += 1
                 'Else
                 'Me.dgvComplementos.Item("MontoDataGridViewTextBoxColumn", i).Style.BackColor = Color.Green
                 'Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).ReadOnly = False
                 'End If
                 Me.Refresh()
-                    pbTodos.Value += 1
-                End If
+                pbTodos.Value += 1
+            End If
         Next
         pbCheque.Visible = False
         pbTodos.Visible = False
