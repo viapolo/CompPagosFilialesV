@@ -168,14 +168,14 @@ Public Class frmPrincipal
         Me.taCFDI_CompConsFactoraje.NProcXRFC_FillBy(Me.dsProduction.CFDI_CompConsFactoraje, cmbRFC.Text)
 
         For i = 0 To dgvComplementos.Rows.Count - 1
-            If cmbRFC.Text = "GTC980421R4A" Or cmbRFC.Text = "DME061031H27" Or cmbRFC.Text = "DIM061230LN8" Then
+            If cmbRFC.Text = "GTC980421R4A" Or cmbRFC.Text = "DME061031H27" Or cmbRFC.Text = "DIM061230LN8" Or cmbRFC.Text = "HPI880624SW5" Or cmbRFC.Text = "FGM790801SD7" Then
                 Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).ReadOnly = False
                 Me.dgvComplementos.Item("dgDocRelacionado", i).Value = "--"
             Else
                 Me.dgvComplementos.Item("dgDocRelacionado", i).Value = "UUID's Rel"
             End If
         Next
-        If cmbRFC.Text = "GTC980421R4A" Or cmbRFC.Text = "DME061031H27" Or cmbRFC.Text = "DIM061230LN8" Then
+        If cmbRFC.Text = "GTC980421R4A" Or cmbRFC.Text = "DME061031H27" Or cmbRFC.Text = "DIM061230LN8" Or cmbRFC.Text = "HPI880624SW5" Or cmbRFC.Text = "FGM790801SD7" Then
             btnProcesar.Enabled = False
             btnTimbrar.Enabled = True
         End If
@@ -225,7 +225,7 @@ Public Class frmPrincipal
         pbTodos.Maximum = dgvComplementos.Rows.Count + 1
         Dim verdes As Integer = 0
         For i = 0 To dgvComplementos.Rows.Count - 1
-            If dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "FGM790801SD7" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PCO880928RD1" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PPL8012295V2" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "MSU850911A56" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PAM781201CWO" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "HPI880624SW5" Then
+            If dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PCO880928RD1" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PPL8012295V2" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "MSU850911A56" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PAM781201CWO" Then
                 'FILIALES
                 Me.taComplementos.DocRela_FillBy(Me.dsComplemento.Vw_ChequesDetalle, dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value, dgvComplementos.Item("ChequeDataGridViewTextBoxColumn", i).Value)
                 Dim importeXML As Double = 0
@@ -291,7 +291,7 @@ Public Class frmPrincipal
                 End If
                 Me.Refresh()
                 pbTodos.Value += 1
-            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "GTC980421R4A" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DIM061230LN8" Then
+            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "GTC980421R4A" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DIM061230LN8" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "HPI880624SW5" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "FGM790801SD7" Then
                 'NO FILIALES
                 Me.taComplementos.DocRela_FillBy(Me.dsComplemento.Vw_ChequesDetalle, dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value, dgvComplementos.Item("ChequeDataGridViewTextBoxColumn", i).Value)
                 Dim importeXML As Double = 0
@@ -418,7 +418,7 @@ Public Class frmPrincipal
 
     Private Sub btnTimbrar_Click(sender As Object, e As EventArgs) Handles btnTimbrar.Click
         For i = 0 To dgvComplementos.Rows.Count - 1
-            If dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "FGM790801SD7" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PCO880928RD1" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PPL8012295V2" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "MSU850911A56" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PAM781201CWO" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "HPI880624SW5" Then
+            If dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PCO880928RD1" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PPL8012295V2" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "MSU850911A56" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "PAM781201CWO" Then
                 Dim valor As Boolean = Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).Value
                 If Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).Value = True Then
                     varFechaDePago = dgvComplementos.Item("FechaPagoDataGridViewTextBoxColumn", i).Value
@@ -609,7 +609,7 @@ Public Class frmPrincipal
                     Next
                     taConsecutivo.ActAProcesado(rowCFDI_ENC._27_Serie_Comprobante, rowCFDI_ENC._1_Folio, varCheque, rowCFDI_ENC._43_RFC_Receptor)
                 End If
-            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "GTC980421R4A" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DIM061230LN8" Then
+            ElseIf dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "GTC980421R4A" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DME061031H27" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "DIM061230LN8" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "HPI880624SW5" Or dgvComplementos.Item("RFCDataGridViewTextBoxColumn", i).Value = "FGM790801SD7" Then
                 Dim valor As Boolean = Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).Value
                 If Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).Value = True Then
                     varFechaDePago = dgvComplementos.Item("FechaPagoDataGridViewTextBoxColumn", i).Value
@@ -751,12 +751,12 @@ Public Class frmPrincipal
 
                     rowCFD_CPAGO = dsCFDI_CPAGO.CFDI_ComplementoPago.NewCFDI_ComplementoPagoRow()
 
-                        rowCFD_CPAGO._1_DetalleAux_Tipo = "CPG"
-                        rowCFD_CPAGO._2_DetalleAux_DescTipo = "DoctoRelacionado"
-                        rowCFD_CPAGO._3_DetalleAux_Misc01 = "HD"
-                        rowCFD_CPAGO._4_DetalleAux_Misc02 = "00000000-0000-0000-0000-000000000000" 'rowsD4.UUID 'dgvUUIDRelacionados.Item("dgUUID", row.Index).Value
-                        rowCFD_CPAGO._5_DetalleAux_Misc03 = ""  'dgvUUIDRelacionados.Item("dgSerie", row.Index).Value
-                        rowCFD_CPAGO._6_DetalleAux_Misc04 = ""  'dgvUUIDRelacionados.Item("dgFolio", row.Index).Value
+                    rowCFD_CPAGO._1_DetalleAux_Tipo = "CPG"
+                    rowCFD_CPAGO._2_DetalleAux_DescTipo = "DoctoRelacionado"
+                    rowCFD_CPAGO._3_DetalleAux_Misc01 = "HD"
+                    rowCFD_CPAGO._4_DetalleAux_Misc02 = "00000000-0000-0000-0000-000000000000" 'rowsD4.UUID 'dgvUUIDRelacionados.Item("dgUUID", row.Index).Value
+                    rowCFD_CPAGO._5_DetalleAux_Misc03 = ""  'dgvUUIDRelacionados.Item("dgSerie", row.Index).Value
+                    rowCFD_CPAGO._6_DetalleAux_Misc04 = ""  'dgvUUIDRelacionados.Item("dgFolio", row.Index).Value
                     rowCFD_CPAGO._7_DetalleAux_Misc05 = "MXN" 'validaNull(leeXML(rowsD4.CFDOriginal, "Moneda")) 'dgvUUIDRelacionados.Item("dgMoneda", row.Index).Value
                     rowCFD_CPAGO._8_DetalleAux_Misc06 = ""
 
@@ -765,25 +765,25 @@ Public Class frmPrincipal
 
                     rowCFD_CPAGO._10_DetalleAux_Misc08 = "1" 'taCFDI_CPAGO.ObtieneNoPago(rowCFD_CPAGO._4_DetalleAux_Misc02)
 
-                        rowCFD_CPAGO._11_DetalleAux_Misc09 = varMontoDePago
-                        rowCFD_CPAGO._12_DetalleAux_Misc10 = varMontoDePago
-                        rowCFD_CPAGO._13_DetalleAux_Misc11 = CDec(rowCFD_CPAGO._11_DetalleAux_Misc09 - varMontoDePago)
+                    rowCFD_CPAGO._11_DetalleAux_Misc09 = varMontoDePago
+                    rowCFD_CPAGO._12_DetalleAux_Misc10 = varMontoDePago
+                    rowCFD_CPAGO._13_DetalleAux_Misc11 = CDec(rowCFD_CPAGO._11_DetalleAux_Misc09 - varMontoDePago)
 
-                        rowCFD_CPAGO._18_DetalleAux_Misc16 = ""
-                            rowCFD_CPAGO._19_DetalleAux_Folio = rowCFDI_ENC._1_Folio
-                            rowCFD_CPAGO._20_DetalleAux_Serie = rowCFDI_ENC._27_Serie_Comprobante
+                    rowCFD_CPAGO._18_DetalleAux_Misc16 = ""
+                    rowCFD_CPAGO._19_DetalleAux_Folio = rowCFDI_ENC._1_Folio
+                    rowCFD_CPAGO._20_DetalleAux_Serie = rowCFDI_ENC._27_Serie_Comprobante
 
-                            dsCFDI_CPAGO.CFDI_ComplementoPago.Rows.Add(rowCFD_CPAGO)
-                            taCFDI_CPAGO.Update(dsCFDI_CPAGO.CFDI_ComplementoPago)
+                    dsCFDI_CPAGO.CFDI_ComplementoPago.Rows.Add(rowCFD_CPAGO)
+                    taCFDI_CPAGO.Update(dsCFDI_CPAGO.CFDI_ComplementoPago)
 
-                        ' Next
-                        pbTodos.Value += 1
-                        pbTodos.Visible = False
-                        'Next
-                        taConsecutivo.ActAProcesado(rowCFDI_ENC._27_Serie_Comprobante, rowCFDI_ENC._1_Folio, varCheque, rowCFDI_ENC._43_RFC_Receptor)
+                    ' Next
+                    pbTodos.Value += 1
+                    pbTodos.Visible = False
+                    'Next
+                    taConsecutivo.ActAProcesado(rowCFDI_ENC._27_Serie_Comprobante, rowCFDI_ENC._1_Folio, varCheque, rowCFDI_ENC._43_RFC_Receptor)
                 End If
             Else
-                    Dim valor As Boolean = Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).Value
+                Dim valor As Boolean = Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).Value
                 If Me.dgvComplementos.Item("ProcesadoDataGridViewCheckBoxColumn", i).Value = True Then
                     varFechaDePago = dgvComplementos.Item("FechaPagoDataGridViewTextBoxColumn", i).Value
                     varFormaDePago = dgvComplementos.Item("FormaDePagoPDataGridViewTextBoxColumn", i).Value
